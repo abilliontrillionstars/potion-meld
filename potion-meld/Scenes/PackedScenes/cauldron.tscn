@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://v6meuafbqk1b"]
+
+[ext_resource type="PackedScene" uid="uid://i7c3dtgswffw" path="res://Models/cauldron.fbx" id="1_jsf86"]
+[ext_resource type="Material" uid="uid://rbroqgk0b7e8" path="res://Materials/BaseMaterial.tres" id="2_n32s1"]
+[ext_resource type="Material" uid="uid://c2fyh82rgomgk" path="res://Materials/LiquidMaterial.tres" id="3_3ufmt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cobra"]
+
+[node name="cauldron" instance=ExtResource("1_jsf86")]
+
+[node name="Cauldron" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="HandleLeft" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="RingLeft" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="RingRight" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="Chains" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="HandleRight" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="MetalBandTop" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="MetalBandBottom" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_n32s1")
+
+[node name="Liquid" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("3_3ufmt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535756, 0)
+visible = false
+mesh = SubResource("BoxMesh_cobra")
+surface_material_override/0 = ExtResource("3_3ufmt")
