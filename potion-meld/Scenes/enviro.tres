@@ -1,0 +1,6 @@
+[gd_resource type="Environment" format=3 uid="uid://kof6le8h2tg8"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.48998, 0.459701, 0.443528, 1)
+ssao_enabled = true
