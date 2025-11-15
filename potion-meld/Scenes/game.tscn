@@ -1,18 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=23 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://k461333llrkv" path="res://Models/counter.fbx" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://dthtf3qptidiw" path="res://Models/countersides.fbx" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://c0h4xqj1tmy8n" path="res://Models/table.fbx" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://2qvi0ha067dj" path="res://Models/door.fbx" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://clinl35gwqfv1" path="res://Models/window.fbx" id="9_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://d32w7ml6ilp8u" path="res://Models/shelves.fbx" id="10_ldgsr"]
-[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="11_o5yvi"]
-[ext_resource type="Script" path="res://Scripts/drawer.gd" id="12_rku1e"]
-[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://bptvd6yh36f1x" path="res://Models/counter.fbx" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://ddef3ii6grjab" path="res://Models/countersides.fbx" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://c5nv5fud8gj15" path="res://Models/table.fbx" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://cabhfxdpql623" path="res://Models/door.fbx" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://b3cjv1oe2og6s" path="res://Models/window.fbx" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://nvmydtfupqqn" path="res://Models/shelves.fbx" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://l842s41x4hxu" path="res://Textures/component drawer.png" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="12_rku1e"]
+[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://ckhydoh7t1nww" path="res://Models/stirrer.fbx" id="15_nb51f"]
+[ext_resource type="PackedScene" uid="uid://cched7ca6n0xd" path="res://Scenes/PackedScenes/npc.tscn" id="16_nnt18"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -342,6 +344,12 @@ script = ExtResource("13_rfjv2")
 
 [node name="Timer" type="Timer" parent="HUD/DayTimerTest"]
 autostart = true
+
+[node name="stirrer" parent="." instance=ExtResource("15_nb51f")]
+transform = Transform3D(-0.949283, 0, 0.314423, 0, 1, 0, -0.314423, 0, -0.949283, -6.18822, -0.200901, -1.52272)
+
+[node name="Node3D" parent="." instance=ExtResource("16_nnt18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97457, 0, 3.34303)
 
 [connection signal="ready" from="Geometry/MeshInstance3D8" to="HUD/TextureButton" method="_on_mesh_instance_3d_8_ready"]
 [connection signal="pressed" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_pressed"]
