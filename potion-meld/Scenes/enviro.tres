@@ -1,6 +1,22 @@
-[gd_resource type="Environment" format=3 uid="uid://kof6le8h2tg8"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://kof6le8h2tg8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m7r0l"]
+
+[sub_resource type="Sky" id="Sky_isaen"]
+sky_material = SubResource("ProceduralSkyMaterial_m7r0l")
 
 [resource]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.48998, 0.459701, 0.443528, 1)
+sky = SubResource("Sky_isaen")
+ambient_light_source = 3
+ambient_light_color = Color(0.715501, 0.70756, 0.734194, 1)
 ssao_enabled = true
+ssao_radius = 1.14
+ssao_power = 2.35375
+ssao_light_affect = 0.11
+ssil_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.516268, 0.548363, 0.639276, 1)
+fog_sun_scatter = 0.05
+fog_density = 0.001
