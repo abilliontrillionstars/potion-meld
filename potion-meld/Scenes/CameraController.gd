@@ -44,15 +44,11 @@ func _process(delta: float) -> void:
 			if state == 0:
 				target_transform = middle_transform
 				target_rot = deg_to_rad(middle_y_rot)
-				print (curr_rot)
-				print (target_rot)
 				moving = true
 				state = 1
 			elif state == 1:
 				target_transform = right_transform
 				target_rot = deg_to_rad(right_y_rot)
-				print (curr_rot)
-				print (target_rot)
 				moving = true
 				state = 2
 			elif state == 2:
@@ -60,7 +56,6 @@ func _process(delta: float) -> void:
 				
 	else:
 		lerp += delta
-		#print (lerp)
 		rotation.y = lerp_angle(curr_rot, target_rot, lerp)
 		position.x = lerp(curr_transform, target_transform.x, lerp)
 		if lerp > 1.0:
