@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=17 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://rrwmij0uw38q" path="res://Models/shelves.fbx" id="10_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="11_o5yvi"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="12_rku1e"]
-[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -51,63 +50,6 @@ _data = {
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_wrm1d"]
-
-[sub_resource type="Animation" id="Animation_rku1e"]
-resource_name = "open"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/TextureButton:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0, 892, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/TextureButton:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(598, -0.25, 0, 0.25, 0, 358, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="Animation" id="Animation_rfjv2"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/TextureButton:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/TextureButton:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(358, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
-_data = {
-&"RESET": SubResource("Animation_rfjv2"),
-&"open": SubResource("Animation_rku1e")
-}
 
 [node name="World" type="Node3D"]
 
@@ -303,13 +245,11 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.591,
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TextureButton" type="TextureButton" parent="HUD"]
+[node name="DrawerPopout" type="TextureButton" parent="HUD"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 3
@@ -317,34 +257,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -290.0
-offset_right = -208.0
-offset_bottom = -222.0
+offset_left = 852.0
+offset_top = 558.0
+offset_right = 904.0
+offset_bottom = 626.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("11_o5yvi")
 script = ExtResource("12_rku1e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/TextureButton"]
-root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_1phco")
-}
-
-[node name="DayTimerTest" type="Label" parent="HUD"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "test"
-script = ExtResource("13_rfjv2")
-
-[node name="Timer" type="Timer" parent="HUD/DayTimerTest"]
-autostart = true
-
-[connection signal="ready" from="Geometry/MeshInstance3D8" to="HUD/TextureButton" method="_on_mesh_instance_3d_8_ready"]
-[connection signal="pressed" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_pressed"]
-[connection signal="ready" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_ready"]
-[connection signal="ready" from="HUD/DayTimerTest" to="HUD/DayTimerTest" method="_on_ready"]
-[connection signal="timeout" from="HUD/DayTimerTest/Timer" to="HUD/DayTimerTest" method="_on_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DrawerPopout"]

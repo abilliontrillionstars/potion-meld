@@ -3,11 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuh8eevv7wvfe"
-valid=false
+path.s3tc="res://.godot/imported/clear+sea+water-2048x2048.png-ed99b44793c715172fa3766373e39973.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://Textures/clear+sea+water-2048x2048.png"
+dest_files=["res://.godot/imported/clear+sea+water-2048x2048.png-ed99b44793c715172fa3766373e39973.s3tc.ctex"]
 
 [params]
 
