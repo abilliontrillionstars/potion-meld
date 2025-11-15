@@ -1,7 +1,7 @@
 extends TextureButton
 var is_open: bool = false
 
-
+var selected_slot: int = -1
 
 func _on_pressed() -> void:
 	if is_open:
