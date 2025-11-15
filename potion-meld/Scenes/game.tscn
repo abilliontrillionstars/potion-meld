@@ -4,17 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://bptvd6yh36f1x" path="res://Models/counter.fbx" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://ddef3ii6grjab" path="res://Models/countersides.fbx" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://c5nv5fud8gj15" path="res://Models/table.fbx" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://cabhfxdpql623" path="res://Models/door.fbx" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://b3cjv1oe2og6s" path="res://Models/window.fbx" id="9_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://nvmydtfupqqn" path="res://Models/shelves.fbx" id="10_ldgsr"]
-[ext_resource type="Texture2D" uid="uid://l842s41x4hxu" path="res://Textures/component drawer.png" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://k461333llrkv" path="res://Models/counter.fbx" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dthtf3qptidiw" path="res://Models/countersides.fbx" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://c0h4xqj1tmy8n" path="res://Models/table.fbx" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://2qvi0ha067dj" path="res://Models/door.fbx" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://clinl35gwqfv1" path="res://Models/window.fbx" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://d32w7ml6ilp8u" path="res://Models/shelves.fbx" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="11_o5yvi"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="12_rku1e"]
-[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
-[ext_resource type="PackedScene" uid="uid://ckhydoh7t1nww" path="res://Models/stirrer.fbx" id="15_nb51f"]
-[ext_resource type="PackedScene" uid="uid://cched7ca6n0xd" path="res://Scenes/PackedScenes/npc.tscn" id="16_nnt18"]
+[ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="13_1phco"]
+[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -59,7 +58,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/TextureButton:position:x")
+tracks/0/path = NodePath("HUD/InventoryPopout:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,7 +69,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/TextureButton:position:y")
+tracks/1/path = NodePath("HUD/InventoryPopout:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +84,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/TextureButton:position:x")
+tracks/0/path = NodePath("HUD/InventoryPopout:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -96,7 +95,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/TextureButton:position:y")
+tracks/1/path = NodePath("HUD/InventoryPopout:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -110,6 +109,9 @@ _data = {
 &"RESET": SubResource("Animation_rfjv2"),
 &"open": SubResource("Animation_rku1e")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_nb51f"]
+font = ExtResource("13_1phco")
 
 [node name="World" type="Node3D"]
 
@@ -311,7 +313,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="HUD"]
+[node name="InventoryPopout" type="TextureButton" parent="HUD"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 3
@@ -329,30 +331,86 @@ scale = Vector2(5, 5)
 texture_normal = ExtResource("11_o5yvi")
 script = ExtResource("12_rku1e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/TextureButton"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/InventoryPopout"]
 root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1phco")
 }
+
+[node name="InvSlot1" type="Control" parent="HUD/InventoryPopout"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
+
+[node name="InvSlot2" type="Control" parent="HUD/InventoryPopout"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 10.0
+offset_right = 42.0
+offset_bottom = 26.0
+
+[node name="InvSlot3" type="Control" parent="HUD/InventoryPopout"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 26.0
+offset_right = 26.0
+offset_bottom = 42.0
+
+[node name="InvSlot4" type="Control" parent="HUD/InventoryPopout"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 26.0
+offset_right = 42.0
+offset_bottom = 42.0
+
+[node name="InvSlot5" type="Control" parent="HUD/InventoryPopout"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 42.0
+offset_right = 26.0
+offset_bottom = 58.0
+
+[node name="InvSlot6" type="Control" parent="HUD/InventoryPopout"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 42.0
+offset_right = 42.0
+offset_bottom = 58.0
 
 [node name="DayTimerTest" type="Label" parent="HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "test"
+label_settings = SubResource("LabelSettings_nb51f")
 script = ExtResource("13_rfjv2")
 
 [node name="Timer" type="Timer" parent="HUD/DayTimerTest"]
 autostart = true
 
-[node name="stirrer" parent="." instance=ExtResource("15_nb51f")]
-transform = Transform3D(-0.949283, 0, 0.314423, 0, 1, 0, -0.314423, 0, -0.949283, -6.18822, -0.200901, -1.52272)
+[node name="CauldronDropHitbox" type="TextureButton" parent="HUD"]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 241.0
+offset_right = 508.0
+offset_bottom = 281.0
 
-[node name="Node3D" parent="." instance=ExtResource("16_nnt18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97457, 0, 3.34303)
-
-[connection signal="ready" from="Geometry/MeshInstance3D8" to="HUD/TextureButton" method="_on_mesh_instance_3d_8_ready"]
-[connection signal="pressed" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_pressed"]
-[connection signal="ready" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_ready"]
+[connection signal="ready" from="Geometry/MeshInstance3D8" to="HUD/InventoryPopout" method="_on_mesh_instance_3d_8_ready"]
+[connection signal="pressed" from="HUD/InventoryPopout" to="HUD/InventoryPopout" method="_on_pressed"]
+[connection signal="ready" from="HUD/InventoryPopout" to="HUD/InventoryPopout" method="_on_ready"]
+[connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot1" to="HUD/InventoryPopout/InvSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot1" to="HUD/InventoryPopout/InvSlot1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot2" to="HUD/InventoryPopout/InvSlot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot2" to="HUD/InventoryPopout/InvSlot2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot3" to="HUD/InventoryPopout/InvSlot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot3" to="HUD/InventoryPopout/InvSlot3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot4" to="HUD/InventoryPopout/InvSlot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot4" to="HUD/InventoryPopout/InvSlot4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot5" to="HUD/InventoryPopout/InvSlot5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot5" to="HUD/InventoryPopout/InvSlot5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot6" to="HUD/InventoryPopout/InvSlot6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot6" to="HUD/InventoryPopout/InvSlot6" method="_on_mouse_exited"]
 [connection signal="ready" from="HUD/DayTimerTest" to="HUD/DayTimerTest" method="_on_ready"]
 [connection signal="timeout" from="HUD/DayTimerTest/Timer" to="HUD/DayTimerTest" method="_on_timer_timeout"]

@@ -37,4 +37,6 @@ func _process(delta: float) -> void:
 	if moving:
 		var dir = (next_destination - position).normalized()
 		position += dir * movespeed * delta
+		if (next_destination - position).length() < 0.3:
+			moving = false
 		#next_destination = Vector3(randi_range(-1, 1))
