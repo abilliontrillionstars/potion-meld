@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
-[ext_resource type="Script" path="res://Scenes/CameraController.gd" id="3_wowpa"]
+[ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://b0m4qbxp6qkcd" path="res://Models/counter.fbx" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://ciesu4hqcblur" path="res://Models/countersides.fbx" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://bdjpqxn1ilgjd" path="res://Models/table.fbx" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://bui3twli65v45" path="res://Models/door.fbx" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://dactuko2d18dj" path="res://Models/window.fbx" id="9_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://rrwmij0uw38q" path="res://Models/shelves.fbx" id="10_ldgsr"]
-[ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="11_o5yvi"]
-[ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="12_rku1e"]
-[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://k461333llrkv" path="res://Models/counter.fbx" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dthtf3qptidiw" path="res://Models/countersides.fbx" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://c0h4xqj1tmy8n" path="res://Models/table.fbx" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://2qvi0ha067dj" path="res://Models/door.fbx" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://clinl35gwqfv1" path="res://Models/window.fbx" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://d32w7ml6ilp8u" path="res://Models/shelves.fbx" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="11_o5yvi"]
+[ext_resource type="Script" path="res://Scripts/drawer.gd" id="12_rku1e"]
+[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -52,6 +52,31 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_wrm1d"]
 
+[sub_resource type="Animation" id="Animation_rfjv2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/TextureButton:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/TextureButton:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(358, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_rku1e"]
 resource_name = "open"
 length = 0.5
@@ -78,31 +103,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
-[sub_resource type="Animation" id="Animation_rfjv2"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/TextureButton:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/TextureButton:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(358, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
 _data = {
 &"RESET": SubResource("Animation_rfjv2"),
@@ -115,7 +115,7 @@ _data = {
 script = ExtResource("1_ebmjs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 2.75, 0)
+transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0.0873487, 2.75, 0)
 environment = ExtResource("3_wrm1d")
 script = ExtResource("3_wowpa")
 left_transform = Vector3(3, 0, -2)
