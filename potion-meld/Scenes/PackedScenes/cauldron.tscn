@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 surface_material_override/0 = ExtResource("2_n32s1")
 
 [node name="Liquid" parent="." index="8"]
-transform = Transform3D(0.92, 0, 0, 0, -4.02145e-08, 0.92, 0, -0.92, -4.02145e-08, 0, 0, 0)
+transform = Transform3D(-3.93403e-08, 0.9, 3.93403e-08, 0, -3.93403e-08, 0.9, 0.9, 3.93403e-08, 1.71962e-15, 0, 0, 0)
 surface_material_override/0 = ExtResource("3_3ufmt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="9"]

@@ -9,7 +9,8 @@ extends Camera3D
 
 var target_transform
 var target_rot
-var curr_transform
+var curr_transform_x
+var curr_transform_z
 var curr_rot
 
 #0 = left, 1 = middle, 2 = right
@@ -23,7 +24,8 @@ func _start() -> void:
 func _process(delta: float) -> void:
 	if !moving:
 		if (Input.is_action_just_pressed("look_left")):
-			curr_transform = position.x
+			curr_transform_x = position.x
+			curr_transform_z = position.z
 			curr_rot = rotation.y
 			if state == 0:
 				pass
@@ -39,7 +41,8 @@ func _process(delta: float) -> void:
 				state = 1
 				
 		if (Input.is_action_just_pressed("look_right")):
-			curr_transform = position.x
+			curr_transform_x = position.x
+			curr_transform_z = position.z
 			curr_rot = rotation.y
 			if state == 0:
 				target_transform = middle_transform
@@ -57,7 +60,8 @@ func _process(delta: float) -> void:
 	else:
 		lerp += delta
 		rotation.y = lerp_angle(curr_rot, target_rot, lerp)
-		position.x = lerp(curr_transform, target_transform.x, lerp)
+		position.x = lerp(curr_transform_x, target_transform.x, lerp)
+		position.z = lerp(curr_transform_z, target_transform.z, lerp)
 		if lerp > 1.0:
 			moving = false
 			lerp = 0
