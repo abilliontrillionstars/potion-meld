@@ -1,20 +1,21 @@
 [gd_scene load_steps=24 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=23 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://cg41vdrad3apm" path="res://Models/counter.fbx" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://d4jit1a7nqse2" path="res://Models/countersides.fbx" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://dth8jpsdn3fs2" path="res://Models/table.fbx" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://bvesqo08ddmk8" path="res://Models/door.fbx" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://p6obnl8d6n05" path="res://Models/window.fbx" id="9_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://cywhuyaucfrcv" path="res://Models/shelves.fbx" id="10_ldgsr"]
-[ext_resource type="Texture2D" uid="uid://bkfwv711y0c1u" path="res://Textures/component drawer.png" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://bptvd6yh36f1x" path="res://Models/counter.fbx" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://ddef3ii6grjab" path="res://Models/countersides.fbx" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://c5nv5fud8gj15" path="res://Models/table.fbx" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://cabhfxdpql623" path="res://Models/door.fbx" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://nvmydtfupqqn" path="res://Models/shelves.fbx" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://l842s41x4hxu" path="res://Textures/component drawer.png" id="11_o5yvi"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="12_rku1e"]
-[ext_resource type="FontFile" uid="uid://cequ23g87c7d1" path="res://Fonts/Tkachevica-7px Regular.ttf" id="13_1phco"]
-[ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scenes/inventory_slot.gd" id="13_nb51f"]
 [ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="13_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://ckhydoh7t1nww" path="res://Models/stirrer.fbx" id="15_nb51f"]
+[ext_resource type="PackedScene" uid="uid://cched7ca6n0xd" path="res://Scenes/PackedScenes/npc.tscn" id="16_nnt18"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -420,5 +421,13 @@ offset_bottom = 281.0
 [connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot5" to="HUD/InventoryPopout/InvSlot5" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="HUD/InventoryPopout/InvSlot6" to="HUD/InventoryPopout/InvSlot6" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/InventoryPopout/InvSlot6" to="HUD/InventoryPopout/InvSlot6" method="_on_mouse_exited"]
+[node name="stirrer" parent="." instance=ExtResource("15_nb51f")]
+transform = Transform3D(-0.949283, 0, 0.314423, 0, 1, 0, -0.314423, 0, -0.949283, -6.18822, -0.200901, -1.52272)
+
+[node name="Node3D" parent="." instance=ExtResource("16_nnt18")]
+
+[connection signal="ready" from="Geometry/MeshInstance3D8" to="HUD/TextureButton" method="_on_mesh_instance_3d_8_ready"]
+[connection signal="pressed" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_pressed"]
+[connection signal="ready" from="HUD/TextureButton" to="HUD/TextureButton" method="_on_ready"]
 [connection signal="ready" from="HUD/DayTimerTest" to="HUD/DayTimerTest" method="_on_ready"]
 [connection signal="timeout" from="HUD/DayTimerTest/Timer" to="HUD/DayTimerTest" method="_on_timer_timeout"]
