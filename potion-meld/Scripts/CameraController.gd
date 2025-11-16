@@ -15,7 +15,7 @@ var curr_rot
 
 #0 = left, 1 = middle, 2 = right
 var state = 1
-var lerp = 0
+var lerp_val = 0
 var moving = false
 
 func _start() -> void:
@@ -58,10 +58,10 @@ func _process(delta: float) -> void:
 				pass
 				
 	else:
-		lerp += delta
-		rotation.y = lerp_angle(curr_rot, target_rot, lerp)
-		position.x = lerp(curr_transform_x, target_transform.x, lerp)
-		position.z = lerp(curr_transform_z, target_transform.z, lerp)
-		if lerp > 1.0:
+		lerp_val += delta
+		rotation.y = lerp_angle(curr_rot, target_rot, lerp_val)
+		position.x = lerp(curr_transform_x, target_transform.x, lerp_val)
+		position.z = lerp(curr_transform_z, target_transform.z, lerp_val)
+		if lerp_val > 1.0:
 			moving = false
-			lerp = 0
+			lerp_val = 0

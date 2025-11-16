@@ -15,6 +15,10 @@ run/main_scene="uid://rbtnml6u88wx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+NpcManager="*res://Scripts/NPCManager.gd"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -38,4 +42,5 @@ look_right={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 anti_aliasing/quality/use_taa=true

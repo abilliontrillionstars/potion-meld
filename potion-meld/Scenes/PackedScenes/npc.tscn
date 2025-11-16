@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://cched7ca6n0xd"]
+
+[ext_resource type="Script" uid="uid://itq7exuwbt2f" path="res://Scripts/NPC.gd" id="1_1o54b"]
+[ext_resource type="Texture2D" uid="uid://2nbe8j3yx2bb" path="res://Textures/NPC.png" id="2_kmhqc"]
+[ext_resource type="Texture2D" uid="uid://6y8g4wevuvl8" path="res://Textures/NPCArms.png" id="3_kmhqc"]
+
+[sub_resource type="Animation" id="Animation_3h4o7"]
+resource_name = "NPCAppear"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_3h4o7"]
+resource_name = "NPCAppear"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_kmhqc"]
+resource_name = "NPCArms"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Arms:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3),
+"points": PackedFloat32Array(0.1, -0.633333, 0.000297911, 0.633333, -0.000297911, 0.05, -0.566667, 0.000776239, 0.566667, -0.000776239, 0.1, -0.6, -0.000297911, 0.6, 0.000297911),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+
+[sub_resource type="Animation" id="Animation_lkyv1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Arms:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3h4o7"]
+_data = {
+&"NPCAppear": SubResource("Animation_3h4o7"),
+&"NPCArms": SubResource("Animation_kmhqc"),
+&"RESET": SubResource("Animation_lkyv1")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_1o54b")
+
+[node name="Body" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.38028, 0)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+shaded = true
+alpha_cut = 3
+alpha_antialiasing_mode = 2
+texture_filter = 0
+texture = ExtResource("2_kmhqc")
+
+[node name="Arms" type="Sprite3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 2
+texture = ExtResource("3_kmhqc")
+
+[node name="BodyAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3h4o7")
+}
+
+[node name="ArmsAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3h4o7")
+}
