@@ -11,6 +11,7 @@ var movespeed = 5.0
 
 var lifetime = 0.0
 var moving = false
+var roaming = false
 var approached = false
 
 func _ready() -> void:
@@ -18,7 +19,6 @@ func _ready() -> void:
 	npc_order.randomize_order()
 	position.x = randf_range(-5, 5)
 	position.z = randf_range(8.0, 9.0)
-	var node = get_child(0) as Sprite3D
 	get_child(2).play("NPCArms")
 	get_child(1).play("NPCAppear")
 	
@@ -33,10 +33,11 @@ func _process(delta: float) -> void:
 			NpcManager.occupy_counter_spot(counter_spot_id)
 			moving = true
 		else:
-			lifetime -= 5.0
+			moving = true
+			next_destination = Vector3(randf_range(-5, 5), 0.0, randf_range(5.0, 9.0))
+			lifetime -= randf_range(4.5, 6.5)
 	if moving:
 		var dir = (next_destination - position).normalized()
 		position += dir * movespeed * delta
 		if (next_destination - position).length() < 0.3:
 			moving = false
-		#next_destination = Vector3(randi_range(-1, 1))
