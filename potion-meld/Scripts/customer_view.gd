@@ -39,16 +39,16 @@ func _on_right_customer_mouse_exited() -> void:
 
 func update_order_bubble(bubble_id: int, order_info: NPCOrder):
     type_texts[bubble_id].text = "Potion of " + order_info.order_type
-    var visc_amt = ""
+    var visc_text = ""
     if order_info.order_viscosity == "VeryThin":
-        visc_amt = "1-20%"
+        visc_text = "Very Thin (1-20%)"
     elif order_info.order_viscosity == "Thin":
-        visc_amt = "21-40%"
+        visc_text = "Thin (21-40%)"
     elif order_info.order_viscosity == "Normal":
-        visc_amt = "41-60%"
+        visc_text = "Regular (41-60%)"
     elif order_info.order_viscosity == "Thick":
-        visc_amt = "61-80%"
+        visc_text = "Thick (61-80%)"
     elif order_info.order_viscosity == "VeryThick":
-        visc_amt = "81-100%"
+        visc_text = "Very Thick (81-100%)"
 
-    viscosity_texts[bubble_id].text = "\n\n\n" + order_info.order_viscosity + " (" + visc_amt + ")"
+    viscosity_texts[bubble_id].text = "\n\n\n" + visc_text
