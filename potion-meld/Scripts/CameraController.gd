@@ -10,6 +10,7 @@ extends Camera3D
 @onready var customer_view = $"../HUD/CustomerView"
 @onready var stirrer_dragbox = $"../HUD/StirrerDragbox"
 @onready var shelf_hitbox = $"../HUD/IngredientShelf"
+@onready var inventory_popout = $"../HUD/InventoryManager/InventoryPopout"
 
 var target_transform
 var target_rot
@@ -42,6 +43,8 @@ func _process(delta: float) -> void:
 				target_rot = deg_to_rad(left_y_rot)
 				shelf_hitbox.show_hitboxes()
 				customer_view.hide_order_hitboxes()
+				inventory_popout.open_drawer()
+				inventory_popout.is_open = true
 				moving = true
 				state = 0
 			elif state == 2:

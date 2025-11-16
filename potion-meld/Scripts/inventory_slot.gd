@@ -16,9 +16,9 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	inv_manager.hovered_inv_slot = slot_id
-	print("selected slot ", slot_id)
+	#print("selected slot ", slot_id)
 
 func _on_mouse_exited() -> void:
 	if slot_id == inv_manager.hovered_inv_slot:
 		inv_manager.hovered_inv_slot = -1
-		print("selected slot ", inv_manager.hovered_inv_slot)
+		#print("selected slot ", inv_manager.hovered_inv_slot)

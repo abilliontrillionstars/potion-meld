@@ -5,9 +5,14 @@ var liquid_mat = preload("res://Materials/LiquidMaterial.tres") as ShaderMateria
 
 var liquid_color = Color(0.6, 0.6, 0.6, 1.0)
 var current_progress: float
+var finished = false
+var finished_timer = 0.0
+var resetting = false
 var heat: float
-var ingredient1: Ingredient
-var ingredient2: Ingredient
+var ingredient1 = -1
+var ingredient2 = -1
+var ingredient1_color
+var ingredient2_color
 
 var desired_color: Color
 var updating_color = false
@@ -42,6 +47,9 @@ func _process(delta: float) -> void:
 	stir_speed = lerp (stir_speed, 0.0, 0.05)
 	
 	stir_angle += stir_speed * delta
+
+	if current_progress > 200 and !finished:
+		finish_potion()
 	
 	stirrer.position.x = cos(deg_to_rad(stir_angle)) / 1.8
 	stirrer.position.z = sin(deg_to_rad(stir_angle)) / 1.8
@@ -49,7 +57,8 @@ func _process(delta: float) -> void:
 	
 	last_mouse_x = get_viewport().get_mouse_position().x
 
-	current_progress += stir_speed / 1000
+	if ingredient1 != -1 and ingredient2 != -1:
+		current_progress += stir_speed / 1000
 	
 
 	if Input.is_action_just_pressed("ChangeColor"):
@@ -63,13 +72,72 @@ func _process(delta: float) -> void:
 		if stirring:
 			stirring = false
 
+	if finished:
+		finished_timer += delta
+		if finished_timer >= 1.0 and !resetting:
+			resetting = true
+			liquid_anim.play("LiquidFlush")
+
+
 func set_cauldron_color(new_color: Color):
+	color_lerp = 0.0
+	liquid_color = liquid_mat.get("shader_parameter/albedo")
 	updating_color = true
 	desired_color = new_color
 	liquid_anim.play("LiquidSplash")
+
+
+#DungeonDust, EyeOfNewt, GrapesOfWrath, PhoenixFeather, GelatinousCubes, GloomWeed, ElvenLeaf
+func add_ingredient(ingr_type):
+	if ingredient1 == -1:
+		ingredient1 = ingr_type
+		ingredient1_color = get_ingr_color(ingr_type)
+	elif ingredient2 == -1:
+		ingredient2 = ingr_type
+		ingredient2_color = get_ingr_color(ingr_type)
+	else:
+		print ("tell player cauldron is too full")
+
+	print (ingr_type)
+	set_cauldron_color(get_ingr_color(ingr_type))
 
 func _on_stirrer_dragbox_mouse_entered() -> void:
 	can_stir = true
 
 func _on_stirrer_dragbox_2_mouse_exited() -> void:
 	can_stir = false
+
+func finish_potion():
+	finished = true
+	current_progress = 0.0
+	print ("finished stirring potion")
+	var blend_color = Color((ingredient1_color.r + ingredient2_color.r) / 2, (ingredient1_color.g + ingredient2_color.g) / 2, (ingredient1_color.b + ingredient2_color.b) / 2, 1.0)
+	print (ingredient2_color)
+	print (blend_color)
+	set_cauldron_color(blend_color)
+
+func reset_cauldron():
+	finished = false
+	resetting = false
+	finished_timer = 0.0
+	current_progress = 0.0
+	ingredient1 = -1
+	ingredient2 = -1
+	liquid_mat.set("shader_parameter/albedo", Color(0.5, 0.5, 0.5, 1.0))
+
+func get_ingr_color(ingr_type):
+	match ingr_type:
+		0: #"DungeonDust":
+			return (Color(0.3411,0.2666,0.2,1.0))
+		1: #"EyeOfNewt":
+			return (Color(0.8941,0.9019,0.2627,1.0))
+		2: #"GrapesOfWrath":
+			return (Color(0.6823,0.4353,0.604,1.0))
+		3: #"PhoenixFeather":
+			return (Color(0.651,0.047,0.047,1.0))
+		4: #"GelatinousCubes":
+			return (Color(0.31,0.8745,0.7451,1.0))
+		5: #"GloomWeed":
+			return (Color(0.557,0.2352,0.91,1.0))
+		6: #"ElvenLeaf":
+			return (Color(0.251,0.357,0.2352,1.0))

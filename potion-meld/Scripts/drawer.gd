@@ -10,7 +10,9 @@ func _on_pressed() -> void:
 		self.get_child(0).play("open")
 	self.is_open = not self.is_open
 	
-
+func open_drawer():
+	if !is_open:
+		self.get_child(0).play("open")
 
 func _on_ready() -> void:
 	self.set_position(Vector2(768, 539))

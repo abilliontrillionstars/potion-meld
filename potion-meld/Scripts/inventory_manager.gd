@@ -12,6 +12,7 @@ var gloomweed_sprite = preload("res://Textures/gloomweed.png")
 var elven_sprite = preload("res://Textures/elvenleaf.png")
 
 @onready var camera_ref = $"../../Camera3D"
+@onready var cauldron = $"../../cauldron"
 
 var inv_slots_occupied = [false, false, false, false, false, false]
 var inv_slot_ingredients = [null, null, null, null, null, null]
@@ -54,10 +55,17 @@ func _process(delta: float) -> void:
 
 		if hovered_inv_slot != -1:
 			if camera_ref.state == 0:
-				print (hovered_inv_slot)
+				#print (hovered_inv_slot)
 				inv_slot_ingredients[hovered_inv_slot] = null
 				inv_slots_occupied[hovered_inv_slot] = false
 				slot_displays[hovered_inv_slot].texture = null
+
+			if camera_ref.state == 2:
+				cauldron.add_ingredient(inv_slot_ingredients[hovered_inv_slot])
+				inv_slot_ingredients[hovered_inv_slot] = null
+				inv_slots_occupied[hovered_inv_slot] = false
+				slot_displays[hovered_inv_slot].texture = null
+				print ("put dat shit in the cauldron !")
 
 
 	if camera_ref.state == 0:
