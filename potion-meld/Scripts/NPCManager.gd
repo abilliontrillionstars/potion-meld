@@ -24,8 +24,9 @@ func _process(delta: float) -> void:
 		AddNPC()
 	
 func AddNPC():
-	var new_npc = npc_scene.instantiate()
+	var new_npc = npc_scene.instantiate() as NPC
 	get_parent().add_child(new_npc)
+	new_npc.npc_id = npcs.size()
 	npcs.append(npc_scene.instantiate())
 	
 func get_next_open_counter_spot():
@@ -38,5 +39,5 @@ func get_next_open_counter_spot():
 	else:
 		return [-1, null]
 		
-func occupy_counter_spot(spot_id: int):
+func occupy_counter_spot(spot_id: int, npc_id: int):
 	counter_spots_avail[spot_id] = false

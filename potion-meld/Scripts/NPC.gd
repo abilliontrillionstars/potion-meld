@@ -6,6 +6,7 @@ var npc_order: NPCOrder
 var npc_wait_timer: float
 var next_destination: Vector3
 var counter_spot_id: int
+var npc_id: int
 
 var movespeed = 5.0
 
@@ -30,7 +31,9 @@ func _process(delta: float) -> void:
 			approached = true
 			counter_spot_id = counter_info[0]
 			next_destination = counter_info[1]
-			NpcManager.occupy_counter_spot(counter_spot_id)
+			NpcManager.occupy_counter_spot(counter_spot_id, npc_id)
+			#print ($"../World/HUD".name)
+			$"../World/HUD/CustomerView".update_order_bubble(counter_spot_id, npc_order)
 			moving = true
 		else:
 			moving = true
@@ -39,5 +42,5 @@ func _process(delta: float) -> void:
 	if moving:
 		var dir = (next_destination - position).normalized()
 		position += dir * movespeed * delta
-		if (next_destination - position).length() < 0.3:
+		if (next_destination - position).length() < 0.1:
 			moving = false
