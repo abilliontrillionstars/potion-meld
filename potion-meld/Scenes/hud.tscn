@@ -5,9 +5,8 @@
 [ext_resource type="Script" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
 [ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
 [ext_resource type="Script" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
-[ext_resource type="Texture2D" uid="uid://ccx2xl2uttkbl" path="res://Textures/phoenixfeather.png" id="6_36asn"]
-[ext_resource type="Script" uid="uid://dwkw5uf1x2pmu" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
 [ext_resource type="PackedScene" uid="uid://dptcbm8j2kgv1" path="res://Scenes/PackedScenes/customer_view.tscn" id="6_36asn"]
+[ext_resource type="Script" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
 
 [sub_resource type="Animation" id="Animation_rfjv2"]
 length = 0.001
@@ -175,6 +174,7 @@ offset_right = 508.0
 offset_bottom = 281.0
 
 [node name="CustomerView" parent="." instance=ExtResource("6_36asn")]
+visible = true
 
 [node name="DraggableItem" type="TextureButton" parent="."]
 texture_filter = 1
@@ -185,7 +185,6 @@ offset_right = 316.0
 offset_bottom = 235.0
 scale = Vector2(3, 3)
 mouse_filter = 1
-texture_normal = ExtResource("6_36asn")
 script = ExtResource("7_8jye8")
 
 [connection signal="pressed" from="InventoryPopout" to="InventoryPopout" method="_on_pressed"]

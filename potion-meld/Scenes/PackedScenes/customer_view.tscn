@@ -42,10 +42,12 @@ expand_margin_bottom = 16.0
 shadow_offset = Vector2(2, 2)
 
 [node name="CustomerView" type="Control" node_paths=PackedStringArray("left_order_bubble", "middle_order_bubble", "right_order_bubble", "type_texts", "viscosity_texts")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("1_wl22r")
 left_order_bubble = NodePath("LeftOrderBubble")
 middle_order_bubble = NodePath("MiddleOrderBubble")

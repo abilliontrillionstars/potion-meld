@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://v6meuafbqk1b"]
+[gd_scene load_steps=10 format=3 uid="uid://v6meuafbqk1b"]
 
 [ext_resource type="PackedScene" uid="uid://i7c3dtgswffw" path="res://Models/cauldron.fbx" id="1_jsf86"]
 [ext_resource type="Script" uid="uid://coasim1e3if6" path="res://Scripts/cauldron.gd" id="2_3ufmt"]
 [ext_resource type="Material" uid="uid://rbroqgk0b7e8" path="res://Materials/BaseMaterial.tres" id="2_n32s1"]
 [ext_resource type="Material" uid="uid://c2fyh82rgomgk" path="res://Materials/LiquidMaterial.tres" id="3_3ufmt"]
+[ext_resource type="PackedScene" uid="uid://ckhydoh7t1nww" path="res://Models/stirrer.fbx" id="5_3ufmt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cobra"]
 
@@ -91,3 +92,6 @@ surface_material_override/0 = ExtResource("3_3ufmt")
 libraries = {
 &"": SubResource("AnimationLibrary_cobra")
 }
+
+[node name="stirrer" parent="." index="11" instance=ExtResource("5_3ufmt")]
+transform = Transform3D(-0.184938, -0.0885118, 0.978756, -0.0164337, 0.996075, 0.0869729, -0.982613, 0, -0.185666, -0.521367, -1.35403, -0.0954354)

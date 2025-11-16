@@ -8,6 +8,7 @@ extends Camera3D
 @export var right_y_rot: float
 
 @onready var customer_view = $"../HUD/CustomerView"
+@onready var stirrer_dragbox = $"../HUD/StirrerDragbox"
 
 var target_transform
 var target_rot
@@ -22,6 +23,9 @@ var moving = false
 
 func _start() -> void:
 	rotation.y = PI
+	customer_view.visible = true
+	stirrer_dragbox.visible = false
+	stirrer_dragbox.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
 
 func _process(delta: float) -> void:
 	if !moving:
@@ -39,6 +43,8 @@ func _process(delta: float) -> void:
 			elif state == 2:
 				target_transform = middle_transform
 				target_rot = deg_to_rad(middle_y_rot)
+				stirrer_dragbox.visible = false
+				stirrer_dragbox.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
 				moving = true
 				state = 1
 			customer_view.hide_order_bubbles()
@@ -55,11 +61,14 @@ func _process(delta: float) -> void:
 			elif state == 1:
 				target_transform = right_transform
 				target_rot = deg_to_rad(right_y_rot)
+				stirrer_dragbox.visible = true
+				stirrer_dragbox.mouse_filter = Control.MouseFilter.MOUSE_FILTER_STOP
 				moving = true
 				state = 2
 			elif state == 2:
 				pass
 			customer_view.hide_order_bubbles()
+			customer_view.visible = false
 				
 	else:
 		lerp_val += delta
@@ -68,4 +77,6 @@ func _process(delta: float) -> void:
 		position.z = lerp(curr_transform_z, target_transform.z, lerp_val)
 		if lerp_val > 1.0:
 			moving = false
+			if state == 1:
+				customer_view.visible = true
 			lerp_val = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=17 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2qvi0ha067dj" path="res://Models/door.fbx" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://clinl35gwqfv1" path="res://Models/window.fbx" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://d32w7ml6ilp8u" path="res://Models/shelves.fbx" id="10_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://y7obduv8kk5d" path="res://Scenes/hud.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://c5b7v6shhr20q" path="res://Scenes/hud.tscn" id="11_o5yvi"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -50,6 +50,8 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_wrm1d"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5yvi"]
+
 [node name="World" type="Node3D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -60,7 +62,7 @@ transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8
 environment = ExtResource("3_wrm1d")
 script = ExtResource("3_wowpa")
 left_transform = Vector3(3, 0, -2)
-right_transform = Vector3(-3, 0, -2)
+right_transform = Vector3(-2.8, 0, -2)
 left_y_rot = 270.0
 middle_y_rot = 180.0
 right_y_rot = 90.0
@@ -243,3 +245,16 @@ spot_attenuation = 0.5
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.591, -1.1877, -2)
 
 [node name="HUD" parent="." instance=ExtResource("11_o5yvi")]
+
+[node name="StirrerDragbox" type="Panel" parent="HUD"]
+visible = false
+layout_mode = 0
+offset_left = 348.0
+offset_top = 177.0
+offset_right = 748.0
+offset_bottom = 477.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o5yvi")
+
+[connection signal="mouse_entered" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_2_mouse_exited"]
