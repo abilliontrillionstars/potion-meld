@@ -86,7 +86,8 @@ func _process(delta: float) -> void:
 			liquid_anim.play("LiquidFlush")
 			cauldron_label_3.visible = true
 			var bb_code = "[wave amp=20.0 freq=2.0 connected=1]"
-			cauldron_label_3.text = bb_code + GameManager.get_potion_name(ingredient1, ingredient2) + "[/wave]"
+			var potion = GameManager.get_potion_name(ingredient1, ingredient2)
+			cauldron_label_3.text = bb_code + potion + "[/wave]"
 
 
 func set_cauldron_color(new_color: Color):
@@ -102,15 +103,18 @@ func add_ingredient(ingr_type):
 	$"../SoundManager/CauldronBubble".playing = true
 	var bb_code = "[wave amp=20.0 freq=2.0 connected=1]"
 	if ingredient1 == -1:
+		var ingr = GameManager.get_ingr_name(ingr_type)
 		cauldron_label_1.visible = true
-		cauldron_label_1.text = bb_code + GameManager.get_ingr_name(ingr_type) + "[/wave]"
+		cauldron_label_1.text = bb_code + ingr + "[/wave]"
 		ingredient1 = ingr_type
 		ingredient1_color = get_ingr_color(ingr_type)
+		cauldron_label_1.modulate = ingredient1_color
 	elif ingredient2 == -1:
 		cauldron_label_2.visible = true
 		cauldron_label_2.text = bb_code + GameManager.get_ingr_name(ingr_type) + "[/wave]"
 		ingredient2 = ingr_type
 		ingredient2_color = get_ingr_color(ingr_type)
+		cauldron_label_2.modulate = ingredient2_color
 	else:
 		print ("tell player cauldron is too full")
 
