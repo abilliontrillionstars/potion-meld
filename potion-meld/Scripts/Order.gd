@@ -2,7 +2,7 @@ extends Node
 
 class_name NPCOrder
 	
-enum order_potion_type { DarkVision, Thorns, FeignDeath }
+enum order_potion_type { DarkVision, Thorns, FeignDeath,  Slow, Dangersense, Sleep, Truesight, Intelligence, Haste, Strength, Gills, Stealth, Healing, Focus, Wings, Growth, Stoneskin, Agility}
 enum order_viscosity_type { VeryThin, Thin, Normal, Thick, VeryThick}
 var order_type
 var order_length: float 
