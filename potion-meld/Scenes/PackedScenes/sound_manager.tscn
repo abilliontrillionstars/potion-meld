@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvmnat5di0pjy"]
+[gd_scene load_steps=9 format=3 uid="uid://bvmnat5di0pjy"]
 
 [ext_resource type="AudioStream" uid="uid://b48mas2fos170" path="res://Sounds/Potion Shop at the Beach.mp3" id="1_7sb30"]
 [ext_resource type="AudioStream" uid="uid://pi4ed33fp2vt" path="res://Sounds/LeFireSFX.mp3" id="2_4xtuh"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://23pnyhqphlcy" path="res://Sounds/LeCauldronBubbleSFX.mp3" id="3_jjcau"]
 [ext_resource type="AudioStream" uid="uid://dukwg30g764ao" path="res://Sounds/DeskBellRingSFX.mp3" id="4_up2ii"]
 [ext_resource type="AudioStream" uid="uid://dl5pgnb2ur54x" path="res://Sounds/PotionClickSFX.mp3" id="5_mdi65"]
+[ext_resource type="AudioStream" uid="uid://bglkeuedk52y8" path="res://Sounds/DrawerOpenSFX.mp3" id="7_lji2x"]
+[ext_resource type="AudioStream" uid="uid://b4vml7pd41whl" path="res://Sounds/DrawerCloseSFX.mp3" id="8_2y7c7"]
 
 [node name="SoundManager" type="Node"]
 
@@ -37,4 +39,16 @@ playback_type = 1
 
 [node name="ClickFeedback" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mdi65")
+playback_type = 1
+
+[node name="DrawerOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lji2x")
+volume_db = 18.0
+pitch_scale = 2.0
+playback_type = 1
+
+[node name="DrawerClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2y7c7")
+volume_db = 18.0
+pitch_scale = 2.0
 playback_type = 1
