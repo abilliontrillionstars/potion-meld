@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scripts/inventory_slot.gd" id="3_8jye8"]
 [ext_resource type="Script" uid="uid://b66vnc1r6v4yn" path="res://Scripts/ingredient_shelf.gd" id="4_7gr8i"]
 [ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
-[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
+[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
 [ext_resource type="PackedScene" uid="uid://dptcbm8j2kgv1" path="res://Scenes/PackedScenes/customer_view.tscn" id="6_36asn"]
 [ext_resource type="Script" uid="uid://dwkw5uf1x2pmu" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
 [ext_resource type="Texture2D" uid="uid://5d51lytvm3vt" path="res://Textures/grapesofwrath.png" id="7_43w4t"]
@@ -80,6 +80,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayerScore" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="RichTextLabel" parent="PlayerScore"]
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 300.0
+offset_bottom = 63.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("4_43w4t")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=20
+.0 freq=2
+.0 connected=1]Score: 0[/wave]"
 
 [node name="InventoryManager" type="Control" parent="." node_paths=PackedStringArray("slot_displays", "ingredient_display")]
 anchors_preset = 0

@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ChangeColor"):
 		set_cauldron_color(Color(0.1, 0.6, 0.2, 1.0))
+		GameManager.add_player_score(50)
 
 	if Input.is_action_just_pressed("MouseClicked"):
 		if can_stir and camera_ref.state == 2:
@@ -117,6 +118,7 @@ func finish_potion():
 	set_cauldron_color(blend_color)
 
 func reset_cauldron():
+	GameManager.attempt_deliver_potion(ingredient1, ingredient2)
 	finished = false
 	resetting = false
 	finished_timer = 0.0

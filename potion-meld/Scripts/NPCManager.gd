@@ -6,6 +6,7 @@ var spawn_timer = 0.0
 var time_to_spawn_next = randi_range(10, 20)
 var first_npc = false
 var counter_spots_avail = [true, true, true]
+var counter_npcs = [null, null, null]
 var counter_spots = [Vector3(2.5, 0.0, 4.0), Vector3(0.0, 0.0, 4.0), Vector3(-2.5, 0.0, 4.0)]
 
 func _init() -> void:
@@ -26,8 +27,7 @@ func _process(delta: float) -> void:
 func AddNPC():
 	var new_npc = npc_scene.instantiate() as NPC
 	get_parent().add_child(new_npc)
-	new_npc.npc_id = npcs.size()
-	npcs.append(npc_scene.instantiate())
+	npcs.append(new_npc)
 	
 func get_next_open_counter_spot():
 	if counter_spots_avail[1]:
@@ -39,6 +39,11 @@ func get_next_open_counter_spot():
 	else:
 		return [-1, null]
 		
-func occupy_counter_spot(spot_id: int, npc_id: int):
+func occupy_counter_spot(spot_id: int, npc: NPC):
 	$"/root/World/SoundManager/CustomerBell".play()
 	counter_spots_avail[spot_id] = false
+	counter_npcs[spot_id] = npc
+
+func free_counter_spot(spot_id):
+	counter_spots_avail[spot_id] = true
+	counter_npcs[spot_id] = null

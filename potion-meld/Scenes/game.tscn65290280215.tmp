@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
-[ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://k461333llrkv" path="res://Models/counter.fbx" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dthtf3qptidiw" path="res://Models/countersides.fbx" id="6_i6g32"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bakv6y4bhedqx" path="res://Textures/phoenixfeather.png" id="16_7nbq1"]
 [ext_resource type="Texture2D" uid="uid://g0q5jmfr20ux" path="res://Textures/gelatinouscubes.png" id="17_exi56"]
 [ext_resource type="Texture2D" uid="uid://dvfevj8yysh3l" path="res://Textures/gloomweed.png" id="18_7t8sx"]
-[ext_resource type="PackedScene" uid="uid://bvmnat5di0pjy" path="res://Scenes/PackedScenes/sound_manager.tscn" id="20_7nbq1"]
+[ext_resource type="PackedScene" path="res://Scenes/PackedScenes/sound_manager.tscn" id="20_7nbq1"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -75,8 +75,6 @@ albedo_color = Color(0.733981, 0.626518, 0.49892, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5yvi"]
 
 [node name="World" type="Node3D"]
-
-[node name="GameManager" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0.0873487, 2.75, 0)
@@ -315,7 +313,14 @@ transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141,
 
 [node name="HUD" parent="." instance=ExtResource("11_o5yvi")]
 
-[node name="InventoryManager" parent="HUD" index="0" node_paths=PackedStringArray("slot_displays")]
+[node name="IWantALabel" parent="HUD/PlayerScore" index="0"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 270.0
+offset_bottom = 63.0
+
+[node name="InventoryManager" parent="HUD" index="1" node_paths=PackedStringArray("slot_displays")]
 slot_displays = [NodePath("InventoryPopout/InvSlot1/Slot1Panel"), NodePath("InventoryPopout/InvSlot2/Slot2Panel"), NodePath("InventoryPopout/InvSlot3/Slot3Panel"), NodePath("InventoryPopout/InvSlot4/Slot4Panel"), NodePath("InventoryPopout/InvSlot5/Slot5Panel"), NodePath("InventoryPopout/InvSlot6/Slot6Panel")]
 
 [node name="IngredientDisplay" parent="HUD/InventoryManager" index="0"]
@@ -331,9 +336,6 @@ offset_right = 847.0
 offset_bottom = 583.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="IWantALabel" parent="HUD/PlayerScore" index="0"]
-layout_mode = 0
 
 [node name="StirrerDragbox" type="Panel" parent="HUD"]
 layout_mode = 0
