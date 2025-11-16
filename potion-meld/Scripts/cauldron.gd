@@ -12,6 +12,7 @@ var ingredient2: Ingredient
 var desired_color: Color
 var updating_color = false
 var color_lerp = 0.0
+@onready var liquid_anim = $"LiquidAnim"
 
 func _ready() -> void:
     set_cauldron_color(Color(0.6, 0.0, 0.0, 1.0))
@@ -19,7 +20,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     if updating_color:
-        color_lerp += delta / 5.0
+        color_lerp += delta / 2.0
         liquid_mat.set("shader_parameter/albedo", Color(lerp(liquid_color.r, desired_color.r, color_lerp), lerp(liquid_color.g, desired_color.g, color_lerp), lerp(liquid_color.b, desired_color.b, color_lerp), 255))
         if color_lerp > 1.0:
             updating_color = false
@@ -32,3 +33,4 @@ func _process(delta: float) -> void:
 func set_cauldron_color(new_color: Color):
     updating_color = true
     desired_color = new_color
+    liquid_anim.play("LiquidSplash")
