@@ -358,6 +358,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_o5yvi")
 
 [node name="SoundManager" parent="." instance=ExtResource("20_7nbq1")]
 
+[connection signal="pressed" from="HUD/LookRightButton" to="Camera3D" method="_on_look_right_button_pressed"]
+[connection signal="pressed" from="HUD/LookLeftButton" to="Camera3D" method="_on_look_left_button_pressed"]
 [connection signal="mouse_entered" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_2_mouse_exited"]
 

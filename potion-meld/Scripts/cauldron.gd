@@ -35,7 +35,7 @@ var stir_angle = 0.0 #radians
 var last_mouse_x = 0.0
 
 func _ready() -> void:
-	set_cauldron_color(Color(0.6, 0.0, 0.0, 1.0))
+	set_cauldron_color(Color(0.6, 0.6, 0.6, 1.0))
 	#liquid_mat.set("shader_parameter/albedo", Color(0.6, 0.0, 0.0, 1.0))
 
 func _process(delta: float) -> void:
