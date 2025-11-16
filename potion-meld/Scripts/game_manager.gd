@@ -1,6 +1,9 @@
 extends Node
 
 var player_score = 0
+var customers_served = 0
+var gameover = false
+
 @onready var player_score_label = $"../World/HUD/PlayerScore/ScoreLabel"
 @onready var customer_view = $"../World/HUD/CustomerView"
 
@@ -9,6 +12,11 @@ var recipes: Dictionary[String, Array] = RecipeBook.recipes
 func _ready() -> void:
 	pass
 	#print (player_score_label.name)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ResetGame") and gameover:
+		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		NpcManager.clear_npcs()
 
 func add_player_score(amt: int):
 	player_score += amt
