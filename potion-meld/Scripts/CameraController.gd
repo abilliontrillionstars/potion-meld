@@ -7,6 +7,8 @@ extends Camera3D
 @export var middle_y_rot: float
 @export var right_y_rot: float
 
+@onready var customer_view = $"../HUD/CustomerView"
+
 var target_transform
 var target_rot
 var curr_transform_x
@@ -39,6 +41,7 @@ func _process(delta: float) -> void:
 				target_rot = deg_to_rad(middle_y_rot)
 				moving = true
 				state = 1
+			customer_view.hide_order_bubbles()
 				
 		if (Input.is_action_just_pressed("look_right")):
 			curr_transform_x = position.x
@@ -56,6 +59,7 @@ func _process(delta: float) -> void:
 				state = 2
 			elif state == 2:
 				pass
+			customer_view.hide_order_bubbles()
 				
 	else:
 		lerp_val += delta

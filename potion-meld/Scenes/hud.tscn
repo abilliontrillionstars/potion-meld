@@ -1,12 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://c5b7v6shhr20q"]
 
-[ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="1_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="1_t1xeu"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="2_36asn"]
-[ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
-[ext_resource type="FontFile" uid="uid://b61rwkqcryrsp" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
-[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
+[ext_resource type="Script" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
+[ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
+[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
 [ext_resource type="Texture2D" uid="uid://ccx2xl2uttkbl" path="res://Textures/phoenixfeather.png" id="6_36asn"]
 [ext_resource type="Script" uid="uid://dwkw5uf1x2pmu" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
+[ext_resource type="PackedScene" uid="uid://dptcbm8j2kgv1" path="res://Scenes/PackedScenes/customer_view.tscn" id="6_36asn"]
 
 [sub_resource type="Animation" id="Animation_rfjv2"]
 length = 0.001
@@ -172,6 +173,8 @@ offset_left = 468.0
 offset_top = 241.0
 offset_right = 508.0
 offset_bottom = 281.0
+
+[node name="CustomerView" parent="." instance=ExtResource("6_36asn")]
 
 [node name="DraggableItem" type="TextureButton" parent="."]
 texture_filter = 1

@@ -1,0 +1,377 @@
+[gd_scene load_steps=7 format=3 uid="uid://dptcbm8j2kgv1"]
+
+[ext_resource type="Script" uid="uid://la1d6wnp7roc" path="res://Scripts/customer_view.gd" id="1_wl22r"]
+[ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="2_48pnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnt18"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nb51f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewbju"]
+bg_color = Color(0.870858, 0.855241, 0.82013, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.735548, 0.70379, 0.606482, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85qyi"]
+bg_color = Color(0.870858, 0.855241, 0.82013, 1)
+border_width_left = 4
+border_width_top = 4
+border_color = Color(0.735548, 0.70379, 0.606482, 1)
+border_blend = true
+corner_radius_top_left = 8
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_offset = Vector2(2, 2)
+
+[node name="CustomerView" type="Control" node_paths=PackedStringArray("left_order_bubble", "middle_order_bubble", "right_order_bubble", "type_texts", "viscosity_texts")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wl22r")
+left_order_bubble = NodePath("LeftOrderBubble")
+middle_order_bubble = NodePath("MiddleOrderBubble")
+right_order_bubble = NodePath("RightOrderBubble")
+type_texts = [NodePath("LeftOrderBubble/Panel/PotionTypeLabel"), NodePath("MiddleOrderBubble/Panel/PotionTypeLabel"), NodePath("RightOrderBubble/Panel/PotionTypeLabel")]
+viscosity_texts = [NodePath("LeftOrderBubble/Panel/ViscosityTypeLabel"), NodePath("MiddleOrderBubble/Panel/ViscosityTypeLabel"), NodePath("RightOrderBubble/Panel/ViscosityTypeLabel")]
+
+[node name="MiddleCustomer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 146.0
+offset_right = 668.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(102.5, 129)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnt18")
+
+[node name="RightCustomer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 668.0
+offset_top = 146.0
+offset_right = 892.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(102.5, 129)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_nb51f")
+
+[node name="LeftCustomer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 220.0
+offset_top = 146.0
+offset_right = 444.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(102.5, 129)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_nb51f")
+
+[node name="LeftOrderBubble" type="Control" parent="."]
+visible = false
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 377.0
+offset_right = 466.0
+offset_bottom = 505.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="LeftOrderBubble"]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 92.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ewbju")
+
+[node name="Panel2" type="Panel" parent="LeftOrderBubble/Panel"]
+layout_mode = 0
+offset_left = 108.335
+offset_top = -16.0
+offset_right = 110.335
+offset_bottom = -16.0
+rotation = 0.765492
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_85qyi")
+
+[node name="IWantALabel" type="RichTextLabel" parent="LeftOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_right = 242.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[wave amp=20
+.0 freq=2
+.0 connected=1]I want a ...[/wave]"
+horizontal_alignment = 1
+
+[node name="PotionTypeLabel" type="RichTextLabel" parent="LeftOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 28.0
+offset_right = 242.0
+offset_bottom = 156.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Potion of Nausea"
+horizontal_alignment = 1
+
+[node name="ViscosityTypeLabel" type="RichTextLabel" parent="LeftOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 242.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "
+
+
+Thin (20-41%)"
+horizontal_alignment = 1
+
+[node name="MiddleOrderBubble" type="Control" parent="."]
+visible = false
+show_behind_parent = true
+z_index = 1
+anchors_preset = 0
+offset_left = 463.0
+offset_top = 377.0
+offset_right = 689.0
+offset_bottom = 505.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="MiddleOrderBubble"]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 92.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ewbju")
+
+[node name="Panel2" type="Panel" parent="MiddleOrderBubble/Panel"]
+layout_mode = 0
+offset_left = 108.335
+offset_top = -16.0
+offset_right = 110.335
+offset_bottom = -16.0
+rotation = 0.765492
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_85qyi")
+
+[node name="IWantALabel" type="RichTextLabel" parent="MiddleOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_right = 242.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[wave amp=20
+.0 freq=2
+.0 connected=1]I want a ...[/wave]"
+horizontal_alignment = 1
+
+[node name="PotionTypeLabel" type="RichTextLabel" parent="MiddleOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 28.0
+offset_right = 242.0
+offset_bottom = 156.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Potion of Nausea"
+horizontal_alignment = 1
+
+[node name="ViscosityTypeLabel" type="RichTextLabel" parent="MiddleOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 242.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "
+
+
+Thin (20-41%)"
+horizontal_alignment = 1
+
+[node name="RightOrderBubble" type="Control" parent="."]
+visible = false
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 688.0
+offset_top = 377.0
+offset_right = 914.0
+offset_bottom = 505.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="RightOrderBubble"]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 92.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ewbju")
+
+[node name="Panel2" type="Panel" parent="RightOrderBubble/Panel"]
+layout_mode = 0
+offset_left = 108.335
+offset_top = -16.0
+offset_right = 110.335
+offset_bottom = -16.0
+rotation = 0.765492
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_85qyi")
+
+[node name="IWantALabel" type="RichTextLabel" parent="RightOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_right = 242.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[wave amp=20
+.0 freq=2
+.0 connected=1]I want a ...[/wave]"
+horizontal_alignment = 1
+
+[node name="PotionTypeLabel" type="RichTextLabel" parent="RightOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 28.0
+offset_right = 242.0
+offset_bottom = 156.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Potion of Nausea"
+horizontal_alignment = 1
+
+[node name="ViscosityTypeLabel" type="RichTextLabel" parent="RightOrderBubble/Panel"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 242.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("2_48pnw")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "
+
+
+Thin (20-41%)"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="MiddleCustomer" to="." method="_on_middle_customer_mouse_entered"]
+[connection signal="mouse_exited" from="MiddleCustomer" to="." method="_on_middle_customer_mouse_exited"]
+[connection signal="mouse_entered" from="RightCustomer" to="." method="_on_right_customer_mouse_entered"]
+[connection signal="mouse_exited" from="RightCustomer" to="." method="_on_right_customer_mouse_exited"]
+[connection signal="mouse_entered" from="LeftCustomer" to="." method="_on_left_customer_mouse_entered"]
+[connection signal="mouse_exited" from="LeftCustomer" to="." method="_on_left_customer_mouse_exited"]
