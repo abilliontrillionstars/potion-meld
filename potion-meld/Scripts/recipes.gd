@@ -1,6 +1,47 @@
 extends Node
 
-var colors = {
+# enum ingredient_type { 
+	#DungeonDust, EyeOfNewt, GrapesOfWrath, 
+	#PhoenixFeather, GelatinousCubes, GloomWeed, ElvenLeaf, 
+#}
+var ingr = Ingredient.ingredient_type
+
+var recipes = {
+	"thorns" : [ingr.DungeonDust, ingr.GrapesOfWrath],
+	"feign death" : [ingr.DungeonDust, ingr.PhoenixFeather],
+	"fortitude" : [ingr.DungeonDust, ingr.GelatinousCubes],
+	"poison" : [ingr.DungeonDust, ingr.GloomWeed],
+	"slow falling" : [ingr.DungeonDust, ingr.ElvenLeaf],
+	"darkvision" : [ingr.DungeonDust, ingr.EyeOfNewt],
+
+	"slow" : [ingr.EyeOfNewt, ingr.GrapesOfWrath],
+	"dangersense" : [ingr.EyeOfNewt, ingr.PhoenixFeather],
+	"sleep" : [ingr.EyeOfNewt, ingr.GelatinousCubes],
+	"true sight" : [ingr.EyeOfNewt, ingr.GloomWeed],
+	"intelligence" : [ingr.EyeOfNewt, ingr.ElvenLeaf],
+
+	"haste" : [ingr.GrapesOfWrath, ingr.PhoenixFeather],
+	"strength" : [ingr.GrapesOfWrath, ingr.GelatinousCubes],
+	"gills" : [ingr.GrapesOfWrath, ingr.GloomWeed],
+	"stealth" : [ingr.GrapesOfWrath, ingr.ElvenLeaf],
+
+	"healing" : [ingr.PhoenixFeather, ingr.GelatinousCubes],
+	"agility" : [ingr.ElvenLeaf, ingr.GloomWeed],
+	"wings" : [ingr.PhoenixFeather, ingr.ElvenLeaf],
+
+	"growth" : [ingr.GelatinousCubes, ingr.GloomWeed],
+	"stoneskin" : [ingr.GelatinousCubes, ingr.ElvenLeaf],
+}
+var ingredient_colors = {
+	"DungeonDust": Color(87,68,51,255),
+	"GrapesOfWrath": Color(174,111,154,255),
+	"ElvenLeaf": Color(64,91,60,255),
+	"GloomWeed": Color(142,60,232,255),
+	"gelatinous cubes": Color(79,223,190,255),
+	"EyeOfNewt": Color(228,230,67,255),
+	"PhoenixFeather": Color(166,12,12,255),
+}
+var potion_colors = {
 	"slow" : Color(23,31,94,255),
 	"intelligence" : Color(74,152,277,255),
 	"fortitude" : Color(134,109,45,255), 
