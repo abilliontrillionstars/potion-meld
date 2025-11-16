@@ -21,7 +21,10 @@ func _on_timer_timeout() -> void:
 	proc_text()
 	day_length -= 1
 	if day_length in customer_times:
-		print("customer walks in! at ", day_length)
+		spawn_customer()
+
+func spawn_customer():
+	print("customer walks in! at ", day_length)
 
 func proc_text() -> String:
 	text = prefix

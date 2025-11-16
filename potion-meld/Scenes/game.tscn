@@ -380,9 +380,13 @@ offset_right = 42.0
 offset_bottom = 58.0
 
 [node name="DayTimerTest" type="Label" parent="HUD"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
 offset_right = 40.0
-offset_bottom = 23.0
+grow_vertical = 0
 text = "test"
 label_settings = SubResource("LabelSettings_nb51f")
 script = ExtResource("13_rfjv2")
