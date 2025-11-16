@@ -6,12 +6,12 @@ const ingr = Ingredient.ingredient_type
 const recipes: Dictionary[String, Array] = {
 	"Thorns" : [ingr.DungeonDust, ingr.GrapesOfWrath],
 	"Feign Death" : [ingr.DungeonDust, ingr.PhoenixFeather],
-	"Fortitude" : [ingr.DungeonDust, ingr.GelatinousCubes],
+	"Slowness" : [ingr.DungeonDust, ingr.GelatinousCubes],
 	"Poison" : [ingr.DungeonDust, ingr.GloomWeed],
-	"Slow Falling" : [ingr.DungeonDust, ingr.ElvenLeaf],
+	"Slow Fall" : [ingr.DungeonDust, ingr.ElvenLeaf],
 	"Darkvision" : [ingr.DungeonDust, ingr.EyeOfNewt],
 
-	"Slow" : [ingr.EyeOfNewt, ingr.GrapesOfWrath],
+	"Vigor" : [ingr.EyeOfNewt, ingr.GrapesOfWrath],
 	"Dangersense" : [ingr.EyeOfNewt, ingr.PhoenixFeather],
 	"Slumber" : [ingr.EyeOfNewt, ingr.GelatinousCubes],
 	"True Sight" : [ingr.EyeOfNewt, ingr.GloomWeed],
@@ -19,17 +19,17 @@ const recipes: Dictionary[String, Array] = {
 
 	"Haste" : [ingr.GrapesOfWrath, ingr.PhoenixFeather],
 	"Strength" : [ingr.GrapesOfWrath, ingr.GelatinousCubes],
-	"Gills" : [ingr.GrapesOfWrath, ingr.GloomWeed],
-	"Stealth" : [ingr.GrapesOfWrath, ingr.ElvenLeaf],
+	"Distress" : [ingr.GrapesOfWrath, ingr.GloomWeed],
+	"Etiquette" : [ingr.GrapesOfWrath, ingr.ElvenLeaf],
 
 	"Healing" : [ingr.PhoenixFeather, ingr.GelatinousCubes],
 	"Focus" : [ingr.PhoenixFeather, ingr.GloomWeed],
-	"Wings" : [ingr.PhoenixFeather, ingr.ElvenLeaf],
+	"Pride" : [ingr.PhoenixFeather, ingr.ElvenLeaf],
 
 	"Growth" : [ingr.GelatinousCubes, ingr.GloomWeed],
-	"Stoneskin" : [ingr.GelatinousCubes, ingr.ElvenLeaf],
+	"Bouncing" : [ingr.GelatinousCubes, ingr.ElvenLeaf],
 	
-	"Agility" : [ingr.GloomWeed, ingr.ElvenLeaf],
+	"Tranquility" : [ingr.GloomWeed, ingr.ElvenLeaf],
 }
 
 
