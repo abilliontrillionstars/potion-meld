@@ -1,0 +1,186 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5b7v6shhr20q"]
+
+[ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="1_t1xeu"]
+[ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="2_36asn"]
+[ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
+[ext_resource type="FontFile" uid="uid://b61rwkqcryrsp" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
+[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
+
+[sub_resource type="Animation" id="Animation_rfjv2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/InventoryPopout:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/InventoryPopout:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(358, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_rku1e"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/InventoryPopout:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(892, -0.25, 0, 0.25, 0, 892, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/InventoryPopout:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(598, -0.25, 0, 0.25, 0, 358, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
+_data = {
+&"RESET": SubResource("Animation_rfjv2"),
+&"open": SubResource("Animation_rku1e")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_nb51f"]
+font = ExtResource("4_43w4t")
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryPopout" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -290.0
+offset_right = -208.0
+offset_bottom = -222.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_t1xeu")
+script = ExtResource("2_36asn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InventoryPopout"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_1phco")
+}
+
+[node name="InvSlot1" type="Control" parent="InventoryPopout"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 26.0
+script = ExtResource("3_8jye8")
+
+[node name="InvSlot2" type="Control" parent="InventoryPopout"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 10.0
+offset_right = 42.0
+offset_bottom = 26.0
+script = ExtResource("3_8jye8")
+
+[node name="InvSlot3" type="Control" parent="InventoryPopout"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 26.0
+offset_right = 26.0
+offset_bottom = 42.0
+script = ExtResource("3_8jye8")
+
+[node name="InvSlot4" type="Control" parent="InventoryPopout"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 26.0
+offset_right = 42.0
+offset_bottom = 42.0
+script = ExtResource("3_8jye8")
+
+[node name="InvSlot5" type="Control" parent="InventoryPopout"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 42.0
+offset_right = 26.0
+offset_bottom = 58.0
+script = ExtResource("3_8jye8")
+
+[node name="InvSlot6" type="Control" parent="InventoryPopout"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 42.0
+offset_right = 42.0
+offset_bottom = 58.0
+script = ExtResource("3_8jye8")
+
+[node name="DayTimerTest" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "test"
+label_settings = SubResource("LabelSettings_nb51f")
+script = ExtResource("5_7gr8i")
+
+[node name="Timer" type="Timer" parent="DayTimerTest"]
+autostart = true
+
+[node name="CauldronDropHitbox" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 241.0
+offset_right = 508.0
+offset_bottom = 281.0
+
+[connection signal="pressed" from="InventoryPopout" to="InventoryPopout" method="_on_pressed"]
+[connection signal="ready" from="InventoryPopout" to="InventoryPopout" method="_on_ready"]
+[connection signal="mouse_entered" from="InventoryPopout/InvSlot1" to="InventoryPopout/InvSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryPopout/InvSlot1" to="InventoryPopout/InvSlot1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryPopout/InvSlot2" to="InventoryPopout/InvSlot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryPopout/InvSlot2" to="InventoryPopout/InvSlot2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryPopout/InvSlot3" to="InventoryPopout/InvSlot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryPopout/InvSlot3" to="InventoryPopout/InvSlot3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryPopout/InvSlot4" to="InventoryPopout/InvSlot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryPopout/InvSlot4" to="InventoryPopout/InvSlot4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryPopout/InvSlot5" to="InventoryPopout/InvSlot5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryPopout/InvSlot5" to="InventoryPopout/InvSlot5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryPopout/InvSlot6" to="InventoryPopout/InvSlot6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryPopout/InvSlot6" to="InventoryPopout/InvSlot6" method="_on_mouse_exited"]
+[connection signal="ready" from="DayTimerTest" to="DayTimerTest" method="_on_ready"]
+[connection signal="timeout" from="DayTimerTest/Timer" to="DayTimerTest" method="_on_timer_timeout"]

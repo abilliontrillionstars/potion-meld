@@ -8,4 +8,6 @@ func _on_mouse_entered() -> void:
 	print("selected slot ", slotnum)
 
 func _on_mouse_exited() -> void:
-	pass # Replace with function body.
+	var slotnum = int(str(self.name)[-1])
+	if slotnum == inv.selected_slot:
+		inv.selected_slot = -1
