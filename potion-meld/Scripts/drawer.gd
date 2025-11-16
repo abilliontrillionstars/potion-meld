@@ -13,4 +13,4 @@ func _on_pressed() -> void:
 
 
 func _on_ready() -> void:
-	self.set_position(Vector2(892, 598))
+	self.set_position(Vector2(768, 539))
