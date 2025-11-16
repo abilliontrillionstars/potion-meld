@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=30 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
@@ -60,8 +60,11 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iivbl"]
 albedo_color = Color(0.325022, 0.240918, 0.212378, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85qyi"]
+albedo_color = Color(0.339018, 0.324784, 0.369174, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t8sx"]
-albedo_color = Color(0.464789, 0.275604, 0.517375, 1)
+albedo_color = Color(0.411765, 0.529412, 0.52549, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nbq1"]
 albedo_color = Color(0.567718, 0.516128, 0.343222, 1)
@@ -70,7 +73,7 @@ albedo_color = Color(0.567718, 0.516128, 0.343222, 1)
 albedo_color = Color(0.410185, 0.528536, 0.526661, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mg4q0"]
-albedo_color = Color(0.733981, 0.626518, 0.49892, 1)
+albedo_color = Color(0.568627, 0.517647, 0.345098, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5yvi"]
 
@@ -110,6 +113,12 @@ transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, -0.15, 0)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_iivbl")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 7.93818, 0, -0.109723, 6.15256)
+mesh = SubResource("BoxMesh_wrm1d")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_85qyi")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 5.06289, 0)
@@ -315,7 +324,10 @@ transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141,
 
 [node name="HUD" parent="." instance=ExtResource("11_o5yvi")]
 
-[node name="InventoryManager" parent="HUD" index="0" node_paths=PackedStringArray("slot_displays")]
+[node name="ScoreLabel" parent="HUD/PlayerScore" index="0"]
+layout_mode = 0
+
+[node name="InventoryManager" parent="HUD" index="1" node_paths=PackedStringArray("slot_displays")]
 slot_displays = [NodePath("InventoryPopout/InvSlot1/Slot1Panel"), NodePath("InventoryPopout/InvSlot2/Slot2Panel"), NodePath("InventoryPopout/InvSlot3/Slot3Panel"), NodePath("InventoryPopout/InvSlot4/Slot4Panel"), NodePath("InventoryPopout/InvSlot5/Slot5Panel"), NodePath("InventoryPopout/InvSlot6/Slot6Panel")]
 
 [node name="IngredientDisplay" parent="HUD/InventoryManager" index="0"]
@@ -331,9 +343,6 @@ offset_right = 847.0
 offset_bottom = 583.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="IWantALabel" parent="HUD/PlayerScore" index="0"]
-layout_mode = 0
 
 [node name="StirrerDragbox" type="Panel" parent="HUD"]
 layout_mode = 0
