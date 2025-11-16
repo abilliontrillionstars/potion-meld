@@ -20,6 +20,11 @@ func _ready() -> void:
 	npc_order.randomize_order()
 	position.x = randf_range(-5, 5)
 	position.z = randf_range(8.0, 9.0)
+	# randomize the robe color
+	var color = Color(randf(),randf(),randf(), 1.0)
+	$Body.modulate = color
+	$Body/Arms.modulate = color
+	
 	get_child(2).play("NPCArms")
 	get_child(1).play("NPCAppear")
 	
