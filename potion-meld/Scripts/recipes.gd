@@ -4,32 +4,32 @@ class_name RecipeBook
 
 const ingr = Ingredient.ingredient_type
 const recipes: Dictionary[String, Array] = {
-	"thorns" : [ingr.DungeonDust, ingr.GrapesOfWrath],
-	"feign death" : [ingr.DungeonDust, ingr.PhoenixFeather],
-	"fortitude" : [ingr.DungeonDust, ingr.GelatinousCubes],
-	"poison" : [ingr.DungeonDust, ingr.GloomWeed],
-	"slow falling" : [ingr.DungeonDust, ingr.ElvenLeaf],
-	"darkvision" : [ingr.DungeonDust, ingr.EyeOfNewt],
+	"Thorns" : [ingr.DungeonDust, ingr.GrapesOfWrath],
+	"Feign Death" : [ingr.DungeonDust, ingr.PhoenixFeather],
+	"Fortitude" : [ingr.DungeonDust, ingr.GelatinousCubes],
+	"Poison" : [ingr.DungeonDust, ingr.GloomWeed],
+	"Slow falling" : [ingr.DungeonDust, ingr.ElvenLeaf],
+	"Darkvision" : [ingr.DungeonDust, ingr.EyeOfNewt],
 
-	"slow" : [ingr.EyeOfNewt, ingr.GrapesOfWrath],
-	"dangersense" : [ingr.EyeOfNewt, ingr.PhoenixFeather],
-	"sleep" : [ingr.EyeOfNewt, ingr.GelatinousCubes],
-	"true sight" : [ingr.EyeOfNewt, ingr.GloomWeed],
-	"intelligence" : [ingr.EyeOfNewt, ingr.ElvenLeaf],
+	"Slow" : [ingr.EyeOfNewt, ingr.GrapesOfWrath],
+	"Dangersense" : [ingr.EyeOfNewt, ingr.PhoenixFeather],
+	"Slumber" : [ingr.EyeOfNewt, ingr.GelatinousCubes],
+	"True Sight" : [ingr.EyeOfNewt, ingr.GloomWeed],
+	"Intelligence" : [ingr.EyeOfNewt, ingr.ElvenLeaf],
 
-	"haste" : [ingr.GrapesOfWrath, ingr.PhoenixFeather],
-	"strength" : [ingr.GrapesOfWrath, ingr.GelatinousCubes],
-	"gills" : [ingr.GrapesOfWrath, ingr.GloomWeed],
-	"stealth" : [ingr.GrapesOfWrath, ingr.ElvenLeaf],
+	"Haste" : [ingr.GrapesOfWrath, ingr.PhoenixFeather],
+	"Strength" : [ingr.GrapesOfWrath, ingr.GelatinousCubes],
+	"Gills" : [ingr.GrapesOfWrath, ingr.GloomWeed],
+	"Stealth" : [ingr.GrapesOfWrath, ingr.ElvenLeaf],
 
-	"healing" : [ingr.PhoenixFeather, ingr.GelatinousCubes],
-	"" : [ingr.PhoenixFeather, ingr.GloomWeed],
-	"wings" : [ingr.PhoenixFeather, ingr.ElvenLeaf],
+	"Healing" : [ingr.PhoenixFeather, ingr.GelatinousCubes],
+	"Focus" : [ingr.PhoenixFeather, ingr.GloomWeed],
+	"Wings" : [ingr.PhoenixFeather, ingr.ElvenLeaf],
 
-	"growth" : [ingr.GelatinousCubes, ingr.GloomWeed],
-	"stoneskin" : [ingr.GelatinousCubes, ingr.ElvenLeaf],
+	"Growth" : [ingr.GelatinousCubes, ingr.GloomWeed],
+	"Stoneskin" : [ingr.GelatinousCubes, ingr.ElvenLeaf],
 	
-	"agility" : [ingr.GloomWeed, ingr.ElvenLeaf],
+	"Agility" : [ingr.GloomWeed, ingr.ElvenLeaf],
 }
 
 
@@ -38,7 +38,7 @@ var ingredient_colors = {
 	"GrapesOfWrath": Color(174,111,154,255),
 	"ElvenLeaf": Color(64,91,60,255),
 	"GloomWeed": Color(142,60,232,255),
-	"gelatinous cubes": Color(79,223,190,255),
+	"GelatinousCubes": Color(79,223,190,255),
 	"EyeOfNewt": Color(228,230,67,255),
 	"PhoenixFeather": Color(166,12,12,255),
 }
