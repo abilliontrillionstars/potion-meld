@@ -1,12 +1,9 @@
 extends Node
 
-# enum ingredient_type { 
-	#DungeonDust, EyeOfNewt, GrapesOfWrath, 
-	#PhoenixFeather, GelatinousCubes, GloomWeed, ElvenLeaf, 
-#}
-var ingr = Ingredient.ingredient_type
+class_name RecipeBook
 
-var recipes = {
+const ingr = Ingredient.ingredient_type
+const recipes: Dictionary[String, Array] = {
 	"thorns" : [ingr.DungeonDust, ingr.GrapesOfWrath],
 	"feign death" : [ingr.DungeonDust, ingr.PhoenixFeather],
 	"fortitude" : [ingr.DungeonDust, ingr.GelatinousCubes],
@@ -26,12 +23,16 @@ var recipes = {
 	"stealth" : [ingr.GrapesOfWrath, ingr.ElvenLeaf],
 
 	"healing" : [ingr.PhoenixFeather, ingr.GelatinousCubes],
-	"agility" : [ingr.ElvenLeaf, ingr.GloomWeed],
+	"" : [ingr.PhoenixFeather, ingr.GloomWeed],
 	"wings" : [ingr.PhoenixFeather, ingr.ElvenLeaf],
 
 	"growth" : [ingr.GelatinousCubes, ingr.GloomWeed],
 	"stoneskin" : [ingr.GelatinousCubes, ingr.ElvenLeaf],
+	
+	"agility" : [ingr.GloomWeed, ingr.ElvenLeaf],
 }
+
+
 var ingredient_colors = {
 	"DungeonDust": Color(87,68,51,255),
 	"GrapesOfWrath": Color(174,111,154,255),

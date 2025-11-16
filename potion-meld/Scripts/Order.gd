@@ -1,8 +1,8 @@
 extends Node
 
 class_name NPCOrder
-	
-enum order_potion_type { DarkVision, Thorns, FeignDeath }
+
+var order_potion_type = RecipeBook.recipes
 enum order_viscosity_type { VeryThin, Thin, Normal, Thick, VeryThick}
 var order_type
 var order_length: float 
