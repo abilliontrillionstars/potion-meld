@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvmnat5di0pjy"]
+[gd_scene load_steps=7 format=3 uid="uid://bvmnat5di0pjy"]
 
 [ext_resource type="AudioStream" uid="uid://b48mas2fos170" path="res://Sounds/Potion Shop at the Beach.mp3" id="1_7sb30"]
 [ext_resource type="AudioStream" uid="uid://pi4ed33fp2vt" path="res://Sounds/LeFireSFX.mp3" id="2_4xtuh"]
 [ext_resource type="AudioStream" uid="uid://c3xqfqh8ak3f5" path="res://Sounds/FootstepsSFX.mp3" id="3_4xtuh"]
+[ext_resource type="AudioStream" uid="uid://23pnyhqphlcy" path="res://Sounds/LeCauldronBubbleSFX.mp3" id="3_jjcau"]
 [ext_resource type="AudioStream" uid="uid://dukwg30g764ao" path="res://Sounds/DeskBellRingSFX.mp3" id="4_up2ii"]
 [ext_resource type="AudioStream" uid="uid://dl5pgnb2ur54x" path="res://Sounds/PotionClickSFX.mp3" id="5_mdi65"]
 
@@ -18,6 +19,12 @@ stream = ExtResource("2_4xtuh")
 volume_db = -10.0
 pitch_scale = 0.5
 autoplay = true
+parameters/looping = true
+
+[node name="CauldronBubble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jjcau")
+volume_db = 24.0
+pitch_scale = 0.5
 parameters/looping = true
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]

@@ -99,6 +99,7 @@ func set_cauldron_color(new_color: Color):
 
 #DungeonDust, EyeOfNewt, GrapesOfWrath, PhoenixFeather, GelatinousCubes, GloomWeed, ElvenLeaf
 func add_ingredient(ingr_type):
+	$"../SoundManager/CauldronBubble".playing = true
 	var bb_code = "[wave amp=20.0 freq=2.0 connected=1]"
 	if ingredient1 == -1:
 		cauldron_label_1.visible = true
@@ -131,7 +132,9 @@ func finish_potion():
 	print (blend_color)
 	set_cauldron_color(blend_color)
 
+
 func reset_cauldron():
+	$"../SoundManager/CauldronBubble".playing = false
 	GameManager.attempt_deliver_potion(ingredient1, ingredient2)
 	finished = false
 	resetting = false
