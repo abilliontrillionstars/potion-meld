@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 	
 func AddNPC():
 	var new_npc = npc_scene.instantiate() as NPC
+	#$"/root/World".add_child(new_npc)
 	get_parent().add_child(new_npc)
 	npcs.append(new_npc)
 	
@@ -39,6 +40,13 @@ func get_next_open_counter_spot():
 	else:
 		return [-1, null]
 		
+func clear_npcs():
+	for i in range(0, npcs.size()):
+		npcs[i].queue_free()
+		
+	counter_spots_avail = [true, true, true]
+	counter_npcs = [null, null, null]
+
 func occupy_counter_spot(spot_id: int, npc: NPC):
 	$"/root/World/SoundManager/CustomerBell".play()
 	counter_spots_avail[spot_id] = false

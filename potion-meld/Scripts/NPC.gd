@@ -23,7 +23,8 @@ func _ready() -> void:
 	npc_wait_timer = 30
 	counter_spot_id = -1
 	# randomize the robe color
-	var color = Color(randf(),randf(),randf(), 1.0)
+	print (randf())
+	var color = Color(clamp(randf(), 0.2, 1.0),clamp(randf(), 0.2, 1.0),clamp(randf(), 0.2, 1.0), 0.0)
 	$Body.modulate = color
 	$Body/Arms.modulate = color
 	

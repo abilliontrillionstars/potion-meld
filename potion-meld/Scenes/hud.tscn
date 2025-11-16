@@ -81,6 +81,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="GameoverTextLabel" type="RichTextLabel" parent="."]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 44.0
+offset_top = 74.0
+offset_right = 1110.0
+offset_bottom = 481.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("4_43w4t")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=20
+.0 freq=2
+.0 connected=1]Score: 0[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PlayerScore" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0

@@ -4,27 +4,22 @@ var prefix = "Time 'til the Wizard returns - "
 # decreases at runtime, set this value to 
 # determine how long the whole day is
 var day_length = 300 # seconds
-# rough times for a customer to show up
-# measured in elapsed time; 5 = 5 secs in
-var customer_times = [5, 120, 240]
+
+@onready var gameover_text = $"../GameoverTextLabel" as RichTextLabel
 
 func _on_ready() -> void:
 	proc_text()
-	# add some randomness to customer appearance times
-	for i in range(len(customer_times)):
-		customer_times[i] += (randi() % 10) - 5
-		customer_times[i] = day_length - customer_times[i]
-	print(customer_times)
 
 func _on_timer_timeout() -> void:
 	# note: called every second
 	proc_text()
 	day_length -= 1
-	if day_length in customer_times:
-		spawn_customer()
 
-func spawn_customer():
-	print("customer walks in! at ", day_length)
+	if day_length <= -1:
+		gameover_text.visible = true
+		gameover_text.text = "[wave amp=20.0 freq=4.0 connected=1]Gameover! \n You served " + str(GameManager.customers_served) + " customers and scored " + str(GameManager.player_score) + " points! \n Press R to restart the game[/wave]"
+		$"Timer".stop()
+		GameManager.gameover = true
 
 func proc_text() -> String:
 	text = prefix
