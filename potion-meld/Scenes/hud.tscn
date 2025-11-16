@@ -87,6 +87,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ScoreLabel" type="RichTextLabel" parent="PlayerScore"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 2.0
 offset_right = 300.0
@@ -375,6 +376,63 @@ offset_right = 720.264
 offset_bottom = 450.04
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="CauldronLabel1" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 9.0
+offset_right = 820.0
+offset_bottom = 105.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("4_43w4t")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CauldronLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 77.0
+offset_right = 820.0
+offset_bottom = 173.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("4_43w4t")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CauldronLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 154.0
+offset_right = 820.0
+offset_bottom = 250.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("4_43w4t")
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="InventoryManager/InventoryPopout" to="InventoryManager/InventoryPopout" method="_on_pressed"]
 [connection signal="ready" from="InventoryManager/InventoryPopout" to="InventoryManager/InventoryPopout" method="_on_ready"]

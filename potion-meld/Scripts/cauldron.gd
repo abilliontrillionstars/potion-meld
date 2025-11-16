@@ -21,6 +21,12 @@ var color_lerp = 0.0
 
 @onready var camera_ref = $"../Camera3D"
 @onready var stirrer = $stirrer
+@onready var cauldron_label_1 = $"../HUD/CauldronLabel1" as RichTextLabel
+@onready var cauldron_label_2 = $"../HUD/CauldronLabel2" as RichTextLabel
+@onready var cauldron_label_3 = $"../HUD/CauldronLabel3" as RichTextLabel
+var label_1_shown = false
+var label_2_shown = false
+var label_3_shown = false
 
 var can_stir = false
 var stirring = false
@@ -78,6 +84,9 @@ func _process(delta: float) -> void:
 		if finished_timer >= 1.0 and !resetting:
 			resetting = true
 			liquid_anim.play("LiquidFlush")
+			cauldron_label_3.visible = true
+			var bb_code = "[wave amp=20.0 freq=2.0 connected=1]"
+			cauldron_label_3.text = bb_code + GameManager.get_potion_name(ingredient1, ingredient2) + "[/wave]"
 
 
 func set_cauldron_color(new_color: Color):
@@ -90,10 +99,15 @@ func set_cauldron_color(new_color: Color):
 
 #DungeonDust, EyeOfNewt, GrapesOfWrath, PhoenixFeather, GelatinousCubes, GloomWeed, ElvenLeaf
 func add_ingredient(ingr_type):
+	var bb_code = "[wave amp=20.0 freq=2.0 connected=1]"
 	if ingredient1 == -1:
+		cauldron_label_1.visible = true
+		cauldron_label_1.text = bb_code + GameManager.get_ingr_name(ingr_type) + "[/wave]"
 		ingredient1 = ingr_type
 		ingredient1_color = get_ingr_color(ingr_type)
 	elif ingredient2 == -1:
+		cauldron_label_2.visible = true
+		cauldron_label_2.text = bb_code + GameManager.get_ingr_name(ingr_type) + "[/wave]"
 		ingredient2 = ingr_type
 		ingredient2_color = get_ingr_color(ingr_type)
 	else:
@@ -125,7 +139,12 @@ func reset_cauldron():
 	current_progress = 0.0
 	ingredient1 = -1
 	ingredient2 = -1
+	cauldron_label_1.visible = false
+	cauldron_label_2.visible = false
 	liquid_mat.set("shader_parameter/albedo", Color(0.5, 0.5, 0.5, 1.0))
+
+func hide_potion_name():
+	cauldron_label_3.visible = false
 
 func get_ingr_color(ingr_type):
 	match ingr_type:
