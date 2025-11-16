@@ -67,6 +67,7 @@ offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(102.5, 129)
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_nnt18")
 
 [node name="RightCustomer" type="Panel" parent="."]
@@ -83,6 +84,7 @@ offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(102.5, 129)
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_nb51f")
 
 [node name="LeftCustomer" type="Panel" parent="."]
@@ -99,10 +101,10 @@ offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(102.5, 129)
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_nb51f")
 
 [node name="LeftOrderBubble" type="Control" parent="."]
-visible = false
 show_behind_parent = true
 anchors_preset = 0
 offset_left = 240.0
@@ -190,7 +192,6 @@ Thin (20-41%)"
 horizontal_alignment = 1
 
 [node name="MiddleOrderBubble" type="Control" parent="."]
-visible = false
 show_behind_parent = true
 z_index = 1
 anchors_preset = 0
@@ -279,7 +280,6 @@ Thin (20-41%)"
 horizontal_alignment = 1
 
 [node name="RightOrderBubble" type="Control" parent="."]
-visible = false
 show_behind_parent = true
 anchors_preset = 0
 offset_left = 688.0
