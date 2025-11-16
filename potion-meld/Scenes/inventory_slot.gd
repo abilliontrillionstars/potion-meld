@@ -2,6 +2,11 @@ extends Control
 
 @onready var inv = get_node("../../InventoryPopout")
 
+func _ready() -> void:
+	self.mouse_entered.connect(_on_mouse_entered)
+	self.mouse_exited.connect(_on_mouse_exited)
+	
+
 func _on_mouse_entered() -> void:
 	var slotnum = int(str(self.name)[-1])
 	inv.selected_slot = slotnum

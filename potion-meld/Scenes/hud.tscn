@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5b7v6shhr20q"]
+[gd_scene load_steps=14 format=3 uid="uid://c5b7v6shhr20q"]
 
-[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="1_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="1_t1xeu"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="2_36asn"]
-[ext_resource type="Script" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
-[ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
-[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
+[ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
+[ext_resource type="Script" uid="uid://b66vnc1r6v4yn" path="res://Scenes/ingredient_shelf.gd" id="4_7gr8i"]
+[ext_resource type="FontFile" uid="uid://b61rwkqcryrsp" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
+[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
 [ext_resource type="PackedScene" uid="uid://dptcbm8j2kgv1" path="res://Scenes/PackedScenes/customer_view.tscn" id="6_36asn"]
-[ext_resource type="Script" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
+[ext_resource type="Script" uid="uid://dwkw5uf1x2pmu" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
+[ext_resource type="Texture2D" uid="uid://dqtdbtyr8qiup" path="res://Textures/grapesofwrath.png" id="7_43w4t"]
 
 [sub_resource type="Animation" id="Animation_rfjv2"]
 length = 0.001
@@ -149,6 +151,59 @@ offset_right = 100.0
 offset_bottom = 152.333
 script = ExtResource("3_8jye8")
 
+[node name="IngredientShelf" type="Node" parent="."]
+script = ExtResource("4_7gr8i")
+
+[node name="ShelfSlot1" type="Control" parent="IngredientShelf"]
+layout_mode = 3
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 97.264
+offset_bottom = 105.04
+mouse_filter = 2
+
+[node name="ShelfSlot2" type="Control" parent="IngredientShelf"]
+layout_mode = 3
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 78.0
+offset_top = 231.0
+offset_right = 176.264
+offset_bottom = 337.04
+mouse_filter = 2
+
+[node name="ShelfSlot3" type="Control" parent="IngredientShelf"]
+layout_mode = 3
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 333.0
+offset_top = 140.0
+offset_right = 431.264
+offset_bottom = 246.04
+mouse_filter = 2
+
+[node name="ShelfSlot4" type="Control" parent="IngredientShelf"]
+layout_mode = 3
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 295.0
+offset_top = 302.0
+offset_right = 393.264
+offset_bottom = 408.04
+mouse_filter = 2
+
+[node name="ShelfSlot5" type="Control" parent="IngredientShelf"]
+layout_mode = 3
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 169.0
+offset_top = 418.0
+offset_right = 267.264
+offset_bottom = 524.04
+mouse_filter = 2
+
 [node name="DayTimerTest" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -179,12 +234,12 @@ visible = true
 [node name="DraggableItem" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 276.0
-offset_top = 195.0
-offset_right = 316.0
-offset_bottom = 235.0
+offset_left = 1.0
+offset_right = 33.0
+offset_bottom = 32.0
 scale = Vector2(3, 3)
 mouse_filter = 1
+texture_normal = ExtResource("7_43w4t")
 script = ExtResource("7_8jye8")
 
 [connection signal="pressed" from="InventoryPopout" to="InventoryPopout" method="_on_pressed"]
@@ -201,6 +256,7 @@ script = ExtResource("7_8jye8")
 [connection signal="mouse_exited" from="InventoryPopout/InvSlot5" to="InventoryPopout/InvSlot5" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="InventoryPopout/InvSlot6" to="InventoryPopout/InvSlot6" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="InventoryPopout/InvSlot6" to="InventoryPopout/InvSlot6" method="_on_mouse_exited"]
+[connection signal="ready" from="IngredientShelf" to="IngredientShelf" method="_on_ready"]
 [connection signal="ready" from="DayTimerTest" to="DayTimerTest" method="_on_ready"]
 [connection signal="timeout" from="DayTimerTest/Timer" to="DayTimerTest" method="_on_timer_timeout"]
 [connection signal="button_down" from="DraggableItem" to="DraggableItem" method="_on_button_down"]
