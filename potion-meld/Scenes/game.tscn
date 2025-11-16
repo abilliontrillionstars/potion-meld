@@ -325,7 +325,10 @@ transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141,
 [node name="HUD" parent="." instance=ExtResource("11_o5yvi")]
 
 [node name="ScoreLabel" parent="HUD/PlayerScore" index="0"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 292.0
+offset_bottom = 61.0
 
 [node name="InventoryManager" parent="HUD" index="1" node_paths=PackedStringArray("slot_displays")]
 slot_displays = [NodePath("InventoryPopout/InvSlot1/Slot1Panel"), NodePath("InventoryPopout/InvSlot2/Slot2Panel"), NodePath("InventoryPopout/InvSlot3/Slot3Panel"), NodePath("InventoryPopout/InvSlot4/Slot4Panel"), NodePath("InventoryPopout/InvSlot5/Slot5Panel"), NodePath("InventoryPopout/InvSlot6/Slot6Panel")]

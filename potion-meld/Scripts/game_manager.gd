@@ -56,6 +56,67 @@ func get_potion_type(ingr1, ingr2):
 	elif ((ingr1 == 5 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 5)):
 		return "Agility"
 
+func get_potion_name(ingr1, ingr2):
+	if ((ingr1 == 0 and ingr2 == 1) or (ingr1 == 1 and ingr2 == 0)):
+		return "Dark Vision"
+	elif ((ingr1 == 0 and ingr2 == 2) or (ingr1 == 2 and ingr2 == 0)):
+		return "Thorns"
+	elif ((ingr1 == 0 and ingr2 == 3) or (ingr1 == 3 and ingr2 == 0)):
+		return "Feign Death"
+	elif ((ingr1 == 0 and ingr2 == 4) or (ingr1 == 4 and ingr2 == 0)):
+		return "Fortitude"
+	elif ((ingr1 == 0 and ingr2 == 5) or (ingr1 == 5 and ingr2 == 0)):
+		return "Poison"
+	elif ((ingr1 == 0 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 0)):
+		return "Slowfall"
+	elif ((ingr1 == 1 and ingr2 == 2) or (ingr1 == 2 and ingr2 == 1)):
+		return "Slow Potion"
+	elif ((ingr1 == 1 and ingr2 == 3) or (ingr1 == 3 and ingr2 == 1)):
+		return "Dangersense"
+	elif ((ingr1 == 1 and ingr2 == 4) or (ingr1 == 4 and ingr2 == 1)):
+		return "Sleep"
+	elif ((ingr1 == 1 and ingr2 == 5) or (ingr1 == 5 and ingr2 == 1)):
+		return "Truesight"
+	elif ((ingr1 == 1 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 1)):
+		return "Intelligence"
+	elif ((ingr1 == 2 and ingr2 == 3) or (ingr1 == 3 and ingr2 == 2)):
+		return "Haste"
+	elif ((ingr1 == 2 and ingr2 == 4) or (ingr1 == 4 and ingr2 == 2)):
+		return "Strength"
+	elif ((ingr1 == 2 and ingr2 == 5) or (ingr1 == 5 and ingr2 == 2)):
+		return "Gills"
+	elif ((ingr1 == 2 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 2)):
+		return "Stealth"
+	elif ((ingr1 == 3 and ingr2 == 4) or (ingr1 == 4 and ingr2 == 3)):
+		return "Healing"
+	elif ((ingr1 == 3 and ingr2 == 5) or (ingr1 == 5 and ingr2 == 3)):
+		return "Focus"
+	elif ((ingr1 == 3 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 3)):
+		return "Wings"
+	elif ((ingr1 == 4 and ingr2 == 5) or (ingr1 == 5 and ingr2 == 4)):
+		return "Growth"
+	elif ((ingr1 == 4 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 4)):
+		return "Stoneskin"
+	elif ((ingr1 == 5 and ingr2 == 6) or (ingr1 == 6 and ingr2 == 5)):
+		return "Agility"
+
+func get_ingr_name(ingr_type):
+	match ingr_type:
+		0: #"DungeonDust":
+			return "Dungeon Dust"
+		1: #"EyeOfNewt":
+			return "Eye Of Newt"
+		2: #"GrapesOfWrath":
+			return "Grapes Of Wrath"
+		3: #"PhoenixFeather":
+			return "Phoenix Feather"
+		4: #"GelatinousCubes":
+			return "Gelatinous Cubes"
+		5: #"GloomWeed":
+			return "Gloom Weed"
+		6: #"ElvenLeaf":
+			return "Elven Leaf"
+
 func attempt_deliver_potion(ingr1, ingr2):
 	var potion_type = get_potion_type(ingr1, ingr2)
 	print (potion_type)
