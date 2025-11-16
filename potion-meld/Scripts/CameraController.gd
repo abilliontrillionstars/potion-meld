@@ -33,6 +33,8 @@ func _start() -> void:
 func _process(delta: float) -> void:
 	if !moving:
 		if (Input.is_action_just_pressed("look_left")):
+			# sound time!
+			$"../SoundManager".find_child("Footsteps").play()
 			curr_transform_x = position.x
 			curr_transform_z = position.z
 			curr_rot = rotation.y
@@ -57,6 +59,8 @@ func _process(delta: float) -> void:
 			customer_view.hide_order_bubbles()
 				
 		if (Input.is_action_just_pressed("look_right")):
+			# sound time!
+			$"../SoundManager".find_child("Footsteps").play()
 			curr_transform_x = position.x
 			curr_transform_z = position.z
 			curr_rot = rotation.y

@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 		#print (hovered_shelf_slot)
 		#print (inv_slots_occupied[0])
 		if hovered_shelf_slot != -1:
+			$"../../SoundManager".find_child("ClickFeedback").play()
 			var open_slot = get_next_open_slot()
 			#print (open_slot)
 			var ingr_type = null

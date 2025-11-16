@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=26 format=3 uid="uid://rbtnml6u88wx"]
 
+[ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dactuko2d18dj" path="res://Models/window.fbx" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://rrwmij0uw38q" path="res://Models/shelves.fbx" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://c5b7v6shhr20q" path="res://Scenes/hud.tscn" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://cnyblt6qc3q0f" path="res://Scripts/shelves.gd" id="11_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://bj04vbgwotorp" path="res://Scenes/PackedScenes/ingredient.tscn" id="12_rku1e"]
 [ext_resource type="Texture2D" uid="uid://cmtwtmoyrpbxg" path="res://Textures/dungeondust.png" id="13_nb51f"]
 [ext_resource type="Texture2D" uid="uid://c67oq2gnvun8g" path="res://Textures/eyeofnewt.png" id="14_nnt18"]
@@ -17,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ccx2xl2uttkbl" path="res://Textures/phoenixfeather.png" id="16_7nbq1"]
 [ext_resource type="Texture2D" uid="uid://40l08f22lx4v" path="res://Textures/gelatinouscubes.png" id="17_exi56"]
 [ext_resource type="Texture2D" uid="uid://600u23mhblxj" path="res://Textures/gloomweed.png" id="18_7t8sx"]
-[ext_resource type="PackedScene" uid="uid://bvmnat5di0pjy" path="res://Scenes/PackedScenes/sound_manager.tscn" id="20_7nbq1"]
+[ext_resource type="Script" uid="uid://cd7dyif542qqb" path="res://Scripts/sound_manager.gd" id="20_7nbq1"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -57,26 +59,12 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_wrm1d"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iivbl"]
-albedo_color = Color(0.325022, 0.240918, 0.212378, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t8sx"]
-albedo_color = Color(0.464789, 0.275604, 0.517375, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nbq1"]
-albedo_color = Color(0.567718, 0.516128, 0.343222, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exi56"]
-albedo_color = Color(0.410185, 0.528536, 0.526661, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mg4q0"]
-albedo_color = Color(0.733981, 0.626518, 0.49892, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5yvi"]
 
 [node name="World" type="Node3D"]
 
 [node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_ebmjs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0.0873487, 2.75, 0)
@@ -109,7 +97,6 @@ autoplay = "CameraBob"
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, -0.15, 0)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_iivbl")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 5.06289, 0)
@@ -120,49 +107,41 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.1, 0, 0, 0, 5.25, 0, 0, 0, 10, -10, 2.5, -2.99697)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7t8sx")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(0.1, 0, 0, 0, 5.25, 0, 0, 0, 8, -6, 2.5, 6.03819)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7nbq1")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(0.1, 0, 0, 0, 5.25, 0, 0, 0, 8, 6, 2.5, 6.03819)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7nbq1")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(8, 0, 0, 0, 5.25, 0, 0, 0, 0.1, -7.95, 2.5, 2)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7t8sx")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(8, 0, 0, 0, 5.25, 0, 0, 0, 0.1, 7.95, 2.5, 2)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_exi56")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(20, 0, 0, 0, 5.25, 0, 0, 0, 0.1, 0, 2.5, 9.9475)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7nbq1")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(30, 0, 0, 0, 5.25, 0, 0, 0, 0.1, 0, 2.5, -10)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_mg4q0")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(0.1, 0, 0, 0, 5.25, 0, 0, 0, 10, 7, 2.5, -3.00481)
 mesh = SubResource("BoxMesh_wrm1d")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_exi56")
 
 [node name="counter" parent="Geometry" instance=ExtResource("5_wowpa")]
 transform = Transform3D(-4.37114e-08, 0, -2, 0, 1, 0, 1, 0, -8.74228e-08, 0, -0.8, 1.75)
@@ -273,6 +252,7 @@ spot_attenuation = 0.5
 
 [node name="shelves" parent="." instance=ExtResource("10_ldgsr")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.591, -1.36971, -2)
+script = ExtResource("11_rfjv2")
 
 [node name="Ingredient1" parent="shelves" instance=ExtResource("12_rku1e")]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 4.504, 0.75)
@@ -341,7 +321,8 @@ offset_bottom = 477.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o5yvi")
 
-[node name="SoundManager" parent="." instance=ExtResource("20_7nbq1")]
+[node name="SoundManager" type="AudioStreamPlayer" parent="."]
+script = ExtResource("20_7nbq1")
 
 [connection signal="mouse_entered" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_2_mouse_exited"]
