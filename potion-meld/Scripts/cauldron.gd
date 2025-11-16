@@ -128,6 +128,8 @@ func _on_stirrer_dragbox_2_mouse_exited() -> void:
 	can_stir = false
 
 func finish_potion():
+	$"../SoundManager/CauldronBubble".playing = false
+	$"../SoundManager/PotionPoof".play()
 	finished = true
 	current_progress = 0.0
 	print ("finished stirring potion")
@@ -138,7 +140,6 @@ func finish_potion():
 
 
 func reset_cauldron():
-	$"../SoundManager/CauldronBubble".playing = false
 	GameManager.attempt_deliver_potion(ingredient1, ingredient2)
 	finished = false
 	resetting = false

@@ -41,4 +41,5 @@ func attempt_deliver_potion(ingr1, ingr2):
 				customer_view.hide_order_bubble(i)
 				NpcManager.counter_npcs[i].leave_counter()
 				print ("found a match, award player points")
+				$"/root/World/SoundManager/ServeCustomer".play()
 			#print (NpcManager.npcs[i].npc_order.order_type)

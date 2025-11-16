@@ -18,11 +18,13 @@ func _process(delta: float) -> void:
 	if !first_npc:
 		if spawn_timer > 1.0:
 			AddNPC()
+			$"/root/World/SoundManager/CustomerBell".play()
 			first_npc = true
 	if spawn_timer > time_to_spawn_next:
 		time_to_spawn_next = randi_range(20, 30)
 		spawn_timer = 0.0
 		AddNPC()
+		$"/root/World/SoundManager/CustomerBell".play()
 	
 func AddNPC():
 	var new_npc = npc_scene.instantiate() as NPC
@@ -48,7 +50,6 @@ func clear_npcs():
 	counter_npcs = [null, null, null]
 
 func occupy_counter_spot(spot_id: int, npc: NPC):
-	$"/root/World/SoundManager/CustomerBell".play()
 	counter_spots_avail[spot_id] = false
 	counter_npcs[spot_id] = npc
 

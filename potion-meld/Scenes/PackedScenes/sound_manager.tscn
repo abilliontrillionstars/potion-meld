@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvmnat5di0pjy"]
+[gd_scene load_steps=14 format=3 uid="uid://bvmnat5di0pjy"]
 
 [ext_resource type="AudioStream" uid="uid://b48mas2fos170" path="res://Sounds/Potion Shop at the Beach.mp3" id="1_7sb30"]
 [ext_resource type="AudioStream" uid="uid://pi4ed33fp2vt" path="res://Sounds/LeFireSFX.mp3" id="2_4xtuh"]
@@ -8,6 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://dl5pgnb2ur54x" path="res://Sounds/PotionClickSFX.mp3" id="5_mdi65"]
 [ext_resource type="AudioStream" uid="uid://bglkeuedk52y8" path="res://Sounds/DrawerOpenSFX.mp3" id="7_lji2x"]
 [ext_resource type="AudioStream" uid="uid://b4vml7pd41whl" path="res://Sounds/DrawerCloseSFX.mp3" id="8_2y7c7"]
+[ext_resource type="AudioStream" uid="uid://cnb7vjhot2g5" path="res://Sounds/NewCauldronPoofSFX.mp3" id="9_2y7c7"]
+[ext_resource type="AudioStream" uid="uid://cm65ko46xwwrf" path="res://Sounds/PotionEndofDaySFX.mp3" id="10_xtuxh"]
+[ext_resource type="AudioStream" uid="uid://c3dt0g2h4ue6s" path="res://Sounds/ClockTickSFX.mp3" id="11_kxw8f"]
+[ext_resource type="AudioStream" uid="uid://cmqw386gy2ux7" path="res://Sounds/ClockTickSFX2.mp3" id="12_mg1qk"]
+[ext_resource type="AudioStream" uid="uid://g3duvv3fcbia" path="res://Sounds/coins-on-table-a-92400.mp3" id="13_mg1qk"]
 
 [node name="SoundManager" type="Node"]
 
@@ -51,4 +56,26 @@ playback_type = 1
 stream = ExtResource("8_2y7c7")
 volume_db = 18.0
 pitch_scale = 2.0
+playback_type = 1
+
+[node name="PotionPoof" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_2y7c7")
+volume_db = 15.0
+pitch_scale = 0.35
+playback_type = 1
+
+[node name="EndGameChime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xtuxh")
+playback_type = 1
+
+[node name="TimeWarningMinute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_mg1qk")
+playback_type = 1
+
+[node name="TimeWarning30Sec" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kxw8f")
+playback_type = 1
+
+[node name="ServeCustomer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_mg1qk")
 playback_type = 1
