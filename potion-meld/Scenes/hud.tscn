@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5b7v6shhr20q"]
+[gd_scene load_steps=17 format=3 uid="uid://c5b7v6shhr20q"]
 
+[ext_resource type="Script" uid="uid://dr5y6fiob8bm7" path="res://Scenes/hud.gd" id="1_4f5kr"]
 [ext_resource type="Script" uid="uid://cp3b3kgs1oo00" path="res://Scripts/inventory_manager.gd" id="1_5ep0j"]
-[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="1_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="1_t1xeu"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="2_36asn"]
 [ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scripts/inventory_slot.gd" id="3_8jye8"]
 [ext_resource type="Script" uid="uid://b66vnc1r6v4yn" path="res://Scripts/ingredient_shelf.gd" id="4_7gr8i"]
-[ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
+[ext_resource type="FontFile" uid="uid://b61rwkqcryrsp" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
 [ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
 [ext_resource type="PackedScene" uid="uid://dptcbm8j2kgv1" path="res://Scenes/PackedScenes/customer_view.tscn" id="6_36asn"]
 [ext_resource type="Script" uid="uid://dwkw5uf1x2pmu" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
-[ext_resource type="Texture2D" uid="uid://5d51lytvm3vt" path="res://Textures/grapesofwrath.png" id="7_43w4t"]
+[ext_resource type="Texture2D" uid="uid://dqtdbtyr8qiup" path="res://Textures/grapesofwrath.png" id="7_43w4t"]
 
 [sub_resource type="Animation" id="Animation_rfjv2"]
 length = 0.001
@@ -80,6 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4f5kr")
 
 [node name="GameoverTextLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -458,6 +460,29 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LookRightButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+button_mask = 3
+
+[node name="LookLeftButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 45.0
+offset_bottom = 2.0
+grow_vertical = 2
+button_mask = 3
+text = "
+"
+
 [connection signal="pressed" from="InventoryManager/InventoryPopout" to="InventoryManager/InventoryPopout" method="_on_pressed"]
 [connection signal="ready" from="InventoryManager/InventoryPopout" to="InventoryManager/InventoryPopout" method="_on_ready"]
 [connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot1" to="InventoryManager/InventoryPopout/InvSlot1" method="_on_mouse_entered"]
@@ -490,3 +515,5 @@ vertical_alignment = 1
 [connection signal="mouse_exited" from="IngredientShelf/ShelfSlot6" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
 [connection signal="mouse_entered" from="IngredientShelf/ShelfSlot7" to="InventoryManager" method="_on_shelf_slot_7_mouse_entered"]
 [connection signal="mouse_exited" from="IngredientShelf/ShelfSlot7" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="pressed" from="LookRightButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LookLeftButton" to="." method="_on_look_left_button_pressed"]
