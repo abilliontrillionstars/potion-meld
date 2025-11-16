@@ -40,4 +40,5 @@ func get_next_open_counter_spot():
 		return [-1, null]
 		
 func occupy_counter_spot(spot_id: int, npc_id: int):
+	$"/root/World/SoundManager/CustomerBell".play()
 	counter_spots_avail[spot_id] = false
