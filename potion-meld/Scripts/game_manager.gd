@@ -3,6 +3,7 @@ extends Node
 var player_score = 0
 
 @onready var player_score_label = $"../World/HUD/PlayerScore/ScoreLabel"
+@onready var customer_view = $"../World/HUD/CustomerView"
 
 func _ready() -> void:
 	print (player_score_label.name)
@@ -62,6 +63,7 @@ func attempt_deliver_potion(ingr1, ingr2):
 		if NpcManager.counter_npcs[i]:
 			if NpcManager.counter_npcs[i].npc_order.order_type == potion_type:
 				GameManager.add_player_score(clamp((40 * (NpcManager.counter_npcs[i].lifetime/ NpcManager.counter_npcs[i].npc_wait_timer)), 0, 9999) + 10)
+				customer_view.hide_order_bubble(i)
 				NpcManager.counter_npcs[i].leave_counter()
 				print ("found a match, award player points")
 			#print (NpcManager.npcs[i].npc_order.order_type)

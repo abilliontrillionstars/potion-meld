@@ -67,6 +67,15 @@ func hide_order_bubbles():
 	middle_order_bubble.visible = false
 	right_order_bubble.visible = false
 
+func hide_order_bubble(id: int):
+	match id:
+		0:
+			left_order_bubble.visible = false
+		1:
+			middle_order_bubble.visible = false
+		2:
+			right_order_bubble.visible = false
+
 func hide_order_hitboxes():
 	print ("hiding hitboxes")
 	for i in range(0, order_hitboxes.size()):

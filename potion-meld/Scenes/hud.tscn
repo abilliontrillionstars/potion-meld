@@ -87,6 +87,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ScoreLabel" type="RichTextLabel" parent="PlayerScore"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 2.0
 offset_right = 300.0
