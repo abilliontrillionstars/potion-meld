@@ -1,7 +1,10 @@
 extends TextureButton
 
 var current_slot: Control
-@onready var inv = $"/root/World/HUD/InventoryPopout"
+@onready var inv = $"/root/World/HUD/InventoryManager/InventoryPopout"
+@onready var inv_manager = $"/root/World/HUD/InventoryManager"
+
+@export var ingredient_type: Ingredient.ingredient_type
 
 func _process(delta: float) -> void:
 	var dest: Vector2
@@ -20,12 +23,15 @@ func _process(delta: float) -> void:
 
 func _on_button_up() -> void:
 	#try to go into an inv slot
-	for node in inv.get_children():
-		if node.is_class("Control"):
-			# drop into a slot if we let go while they overlap
-			var node_rect = Rect2(node.global_position, node.size)
-			if node_rect.intersects(Rect2(self.global_position, self.size)):	
-				self.current_slot = node
+	
+	if !inv_manager.curr_slot_occupied():
+		for node in inv.get_children():
+			if node.is_class("Control"):
+				# drop into a slot if we let go while they overlap
+				var node_rect = Rect2(node.global_position, node.size)
+				if node_rect.intersects(Rect2(self.global_position, self.size)):	
+					self.current_slot = node
+					inv_manager.occupy_curr_slot()
 
 func _on_button_down() -> void:
-	pass
+	mouse_filter = Control.MOUSE_FILTER_PASS

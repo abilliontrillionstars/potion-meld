@@ -1,21 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5b7v6shhr20q"]
+[gd_scene load_steps=16 format=3 uid="uid://c5b7v6shhr20q"]
 
-[ext_resource type="Texture2D" uid="uid://c2mgjgklms2ne" path="res://Textures/component drawer.png" id="1_t1xeu"]
+[ext_resource type="Script" uid="uid://cp3b3kgs1oo00" path="res://Scripts/inventory_manager.gd" id="1_5ep0j"]
+[ext_resource type="Texture2D" uid="uid://bb37pfg4ipych" path="res://Textures/component drawer.png" id="1_t1xeu"]
 [ext_resource type="Script" uid="uid://g1cpupsbd43p" path="res://Scripts/drawer.gd" id="2_36asn"]
-[ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scenes/inventory_slot.gd" id="3_8jye8"]
-[ext_resource type="Script" uid="uid://b66vnc1r6v4yn" path="res://Scenes/ingredient_shelf.gd" id="4_7gr8i"]
-[ext_resource type="FontFile" uid="uid://b61rwkqcryrsp" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
-[ext_resource type="Script" uid="uid://bxgvk8ylb04a7" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
+[ext_resource type="Script" uid="uid://d4p2dgvrtueg" path="res://Scripts/inventory_slot.gd" id="3_8jye8"]
+[ext_resource type="Script" uid="uid://b66vnc1r6v4yn" path="res://Scripts/ingredient_shelf.gd" id="4_7gr8i"]
+[ext_resource type="FontFile" uid="uid://6kua1c3ypbxu" path="res://Fonts/Tkachevica-7px Regular.ttf" id="4_43w4t"]
+[ext_resource type="Script" path="res://Scripts/day_timer.gd" id="5_7gr8i"]
 [ext_resource type="PackedScene" uid="uid://dptcbm8j2kgv1" path="res://Scenes/PackedScenes/customer_view.tscn" id="6_36asn"]
 [ext_resource type="Script" uid="uid://dwkw5uf1x2pmu" path="res://Scripts/draggable_item.gd" id="7_8jye8"]
-[ext_resource type="Texture2D" uid="uid://dqtdbtyr8qiup" path="res://Textures/grapesofwrath.png" id="7_43w4t"]
+[ext_resource type="Texture2D" uid="uid://5d51lytvm3vt" path="res://Textures/grapesofwrath.png" id="7_43w4t"]
 
 [sub_resource type="Animation" id="Animation_rfjv2"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/InventoryPopout:position:x")
+tracks/0/path = NodePath("HUD/InventoryManager/InventoryPopout:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/InventoryPopout:position:y")
+tracks/1/path = NodePath("HUD/InventoryManager/InventoryPopout:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +42,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/InventoryPopout:position:x")
+tracks/0/path = NodePath("HUD/InventoryManager/InventoryPopout:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HUD/InventoryPopout:position:y")
+tracks/1/path = NodePath("HUD/InventoryManager/InventoryPopout:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,6 +71,8 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_nb51f"]
 font = ExtResource("4_43w4t")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ep0j"]
+
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -78,7 +81,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryPopout" type="TextureButton" parent="."]
+[node name="InventoryManager" type="Control" parent="." node_paths=PackedStringArray("slot_displays", "ingredient_display")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5ep0j")
+slot_displays = [null, null, null, null, null, null]
+ingredient_display = NodePath("IngredientDisplay")
+
+[node name="IngredientDisplay" type="RichTextLabel" parent="InventoryManager"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 530.0
+offset_right = 877.0
+offset_bottom = 619.0
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("4_43w4t")
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = "[wave amp=20
+.0 freq=2
+.0 connected=1]Gloomweed[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryPopout" type="TextureButton" parent="InventoryManager"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 3
@@ -86,123 +119,104 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -290.0
-offset_right = -132.0
-offset_bottom = -94.0
+offset_left = 852.0
+offset_top = 318.0
+offset_right = 980.0
+offset_bottom = 514.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("1_t1xeu")
 script = ExtResource("2_36asn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InventoryPopout"]
-root_node = NodePath("../../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InventoryManager/InventoryPopout"]
+root_node = NodePath("../../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1phco")
 }
 
-[node name="InvSlot1" type="Control" parent="InventoryPopout"]
+[node name="InvSlot1" type="Control" parent="InventoryManager/InventoryPopout"]
 anchors_preset = 0
 offset_left = 28.0
 offset_top = 40.0
 offset_right = 60.0
 offset_bottom = 72.0
-mouse_filter = 1
 script = ExtResource("3_8jye8")
 
-[node name="InvSlot2" type="Control" parent="InventoryPopout"]
+[node name="Slot1Panel" type="TextureRect" parent="InventoryManager/InventoryPopout/InvSlot1"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="InvSlot2" type="Control" parent="InventoryManager/InventoryPopout"]
 anchors_preset = 0
 offset_left = 68.0
 offset_top = 40.0
 offset_right = 100.0
 offset_bottom = 72.0
 script = ExtResource("3_8jye8")
+slot_id = 1
 
-[node name="InvSlot3" type="Control" parent="InventoryPopout"]
+[node name="Slot2Panel" type="TextureRect" parent="InventoryManager/InventoryPopout/InvSlot2"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="InvSlot3" type="Control" parent="InventoryManager/InventoryPopout"]
 anchors_preset = 0
 offset_left = 28.0
 offset_top = 80.0
 offset_right = 60.0
 offset_bottom = 112.0
 script = ExtResource("3_8jye8")
+slot_id = 2
 
-[node name="InvSlot4" type="Control" parent="InventoryPopout"]
+[node name="Slot3Panel" type="TextureRect" parent="InventoryManager/InventoryPopout/InvSlot3"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="InvSlot4" type="Control" parent="InventoryManager/InventoryPopout"]
 anchors_preset = 0
 offset_left = 68.0
 offset_top = 80.0
 offset_right = 100.0
 offset_bottom = 112.0
 script = ExtResource("3_8jye8")
+slot_id = 3
 
-[node name="InvSlot5" type="Control" parent="InventoryPopout"]
+[node name="Slot4Panel" type="TextureRect" parent="InventoryManager/InventoryPopout/InvSlot4"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="InvSlot5" type="Control" parent="InventoryManager/InventoryPopout"]
 anchors_preset = 0
 offset_left = 28.0
 offset_top = 120.0
 offset_right = 60.0
 offset_bottom = 152.0
 script = ExtResource("3_8jye8")
+slot_id = 4
 
-[node name="InvSlot6" type="Control" parent="InventoryPopout"]
+[node name="Slot5Panel" type="TextureRect" parent="InventoryManager/InventoryPopout/InvSlot5"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="InvSlot6" type="Control" parent="InventoryManager/InventoryPopout"]
 anchors_preset = 0
 offset_left = 68.0
 offset_top = 120.333
 offset_right = 100.0
 offset_bottom = 152.333
 script = ExtResource("3_8jye8")
+slot_id = 5
 
-[node name="IngredientShelf" type="Node" parent="."]
-script = ExtResource("4_7gr8i")
-
-[node name="ShelfSlot1" type="Control" parent="IngredientShelf"]
-layout_mode = 3
-anchor_right = 0.018
-anchor_bottom = 0.02
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 97.264
-offset_bottom = 105.04
-mouse_filter = 2
-
-[node name="ShelfSlot2" type="Control" parent="IngredientShelf"]
-layout_mode = 3
-anchor_right = 0.018
-anchor_bottom = 0.02
-offset_left = 78.0
-offset_top = 231.0
-offset_right = 176.264
-offset_bottom = 337.04
-mouse_filter = 2
-
-[node name="ShelfSlot3" type="Control" parent="IngredientShelf"]
-layout_mode = 3
-anchor_right = 0.018
-anchor_bottom = 0.02
-offset_left = 333.0
-offset_top = 140.0
-offset_right = 431.264
-offset_bottom = 246.04
-mouse_filter = 2
-
-[node name="ShelfSlot4" type="Control" parent="IngredientShelf"]
-layout_mode = 3
-anchor_right = 0.018
-anchor_bottom = 0.02
-offset_left = 295.0
-offset_top = 302.0
-offset_right = 393.264
-offset_bottom = 408.04
-mouse_filter = 2
-
-[node name="ShelfSlot5" type="Control" parent="IngredientShelf"]
-layout_mode = 3
-anchor_right = 0.018
-anchor_bottom = 0.02
-offset_left = 169.0
-offset_top = 418.0
-offset_right = 267.264
-offset_bottom = 524.04
-mouse_filter = 2
+[node name="Slot6Panel" type="TextureRect" parent="InventoryManager/InventoryPopout/InvSlot6"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
 
 [node name="DayTimerTest" type="Label" parent="."]
 layout_mode = 1
@@ -223,15 +237,19 @@ autostart = true
 
 [node name="CauldronDropHitbox" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 468.0
-offset_top = 241.0
-offset_right = 508.0
-offset_bottom = 281.0
+offset_left = 310.0
+offset_top = 107.0
+offset_right = 802.0
+offset_bottom = 524.0
+script = ExtResource("3_8jye8")
+slot_id = 7
+is_cauldron = true
 
 [node name="CustomerView" parent="." instance=ExtResource("6_36asn")]
 visible = true
 
 [node name="DraggableItem" type="TextureButton" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
@@ -241,23 +259,128 @@ scale = Vector2(3, 3)
 mouse_filter = 1
 texture_normal = ExtResource("7_43w4t")
 script = ExtResource("7_8jye8")
+ingredient_type = 2
 
-[connection signal="pressed" from="InventoryPopout" to="InventoryPopout" method="_on_pressed"]
-[connection signal="ready" from="InventoryPopout" to="InventoryPopout" method="_on_ready"]
-[connection signal="mouse_entered" from="InventoryPopout/InvSlot1" to="InventoryPopout/InvSlot1" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryPopout/InvSlot1" to="InventoryPopout/InvSlot1" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="InventoryPopout/InvSlot2" to="InventoryPopout/InvSlot2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryPopout/InvSlot2" to="InventoryPopout/InvSlot2" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="InventoryPopout/InvSlot3" to="InventoryPopout/InvSlot3" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryPopout/InvSlot3" to="InventoryPopout/InvSlot3" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="InventoryPopout/InvSlot4" to="InventoryPopout/InvSlot4" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryPopout/InvSlot4" to="InventoryPopout/InvSlot4" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="InventoryPopout/InvSlot5" to="InventoryPopout/InvSlot5" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryPopout/InvSlot5" to="InventoryPopout/InvSlot5" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="InventoryPopout/InvSlot6" to="InventoryPopout/InvSlot6" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="InventoryPopout/InvSlot6" to="InventoryPopout/InvSlot6" method="_on_mouse_exited"]
-[connection signal="ready" from="IngredientShelf" to="IngredientShelf" method="_on_ready"]
+[node name="IngredientShelf" type="Control" parent="." node_paths=PackedStringArray("shelf_panels")]
+anchors_preset = 0
+offset_left = -2.0
+offset_right = -2.0
+script = ExtResource("4_7gr8i")
+shelf_panels = [NodePath("ShelfSlot1"), NodePath("ShelfSlot2"), NodePath("ShelfSlot3"), NodePath("ShelfSlot4"), NodePath("ShelfSlot5"), NodePath("ShelfSlot6"), NodePath("ShelfSlot7")]
+
+[node name="ShelfSlot1" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 418.0
+offset_top = 63.0
+offset_right = 529.264
+offset_bottom = 182.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="ShelfSlot2" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 621.0
+offset_top = 63.0
+offset_right = 732.264
+offset_bottom = 182.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="ShelfSlot3" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 336.0
+offset_top = 197.0
+offset_right = 447.264
+offset_bottom = 316.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="ShelfSlot4" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 521.0
+offset_top = 197.0
+offset_right = 632.264
+offset_bottom = 316.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="ShelfSlot5" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 707.0
+offset_top = 197.0
+offset_right = 818.264
+offset_bottom = 316.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="ShelfSlot6" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 430.0
+offset_top = 331.0
+offset_right = 541.264
+offset_bottom = 450.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[node name="ShelfSlot7" type="Panel" parent="IngredientShelf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.02
+offset_left = 609.0
+offset_top = 331.0
+offset_right = 720.264
+offset_bottom = 450.04
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ep0j")
+
+[connection signal="pressed" from="InventoryManager/InventoryPopout" to="InventoryManager/InventoryPopout" method="_on_pressed"]
+[connection signal="ready" from="InventoryManager/InventoryPopout" to="InventoryManager/InventoryPopout" method="_on_ready"]
+[connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot1" to="InventoryManager/InventoryPopout/InvSlot1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryManager/InventoryPopout/InvSlot1" to="InventoryManager/InventoryPopout/InvSlot1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot2" to="InventoryManager/InventoryPopout/InvSlot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryManager/InventoryPopout/InvSlot2" to="InventoryManager/InventoryPopout/InvSlot2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot3" to="InventoryManager/InventoryPopout/InvSlot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryManager/InventoryPopout/InvSlot3" to="InventoryManager/InventoryPopout/InvSlot3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot4" to="InventoryManager/InventoryPopout/InvSlot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryManager/InventoryPopout/InvSlot4" to="InventoryManager/InventoryPopout/InvSlot4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot5" to="InventoryManager/InventoryPopout/InvSlot5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryManager/InventoryPopout/InvSlot5" to="InventoryManager/InventoryPopout/InvSlot5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InventoryManager/InventoryPopout/InvSlot6" to="InventoryManager/InventoryPopout/InvSlot6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryManager/InventoryPopout/InvSlot6" to="InventoryManager/InventoryPopout/InvSlot6" method="_on_mouse_exited"]
 [connection signal="ready" from="DayTimerTest" to="DayTimerTest" method="_on_ready"]
 [connection signal="timeout" from="DayTimerTest/Timer" to="DayTimerTest" method="_on_timer_timeout"]
 [connection signal="button_down" from="DraggableItem" to="DraggableItem" method="_on_button_down"]
 [connection signal="button_up" from="DraggableItem" to="DraggableItem" method="_on_button_up"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot1" to="InventoryManager" method="_on_shelf_slot_1_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot1" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot2" to="InventoryManager" method="_on_shelf_slot_2_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot2" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot3" to="InventoryManager" method="_on_shelf_slot_3_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot3" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot4" to="InventoryManager" method="_on_shelf_slot_4_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot4" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot5" to="InventoryManager" method="_on_shelf_slot_5_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot5" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot6" to="InventoryManager" method="_on_shelf_slot_6_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot6" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]
+[connection signal="mouse_entered" from="IngredientShelf/ShelfSlot7" to="InventoryManager" method="_on_shelf_slot_7_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientShelf/ShelfSlot7" to="InventoryManager" method="_on_shelf_slot_mouse_exited"]

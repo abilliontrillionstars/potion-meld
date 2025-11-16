@@ -9,6 +9,7 @@ extends Camera3D
 
 @onready var customer_view = $"../HUD/CustomerView"
 @onready var stirrer_dragbox = $"../HUD/StirrerDragbox"
+@onready var shelf_hitbox = $"../HUD/IngredientShelf"
 
 var target_transform
 var target_rot
@@ -24,6 +25,7 @@ var moving = false
 func _start() -> void:
 	rotation.y = PI
 	customer_view.visible = true
+	shelf_hitbox.hide_hitboxes()
 	stirrer_dragbox.visible = false
 	stirrer_dragbox.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
 
@@ -38,6 +40,8 @@ func _process(delta: float) -> void:
 			elif state == 1:
 				target_transform = left_transform
 				target_rot = deg_to_rad(left_y_rot)
+				shelf_hitbox.show_hitboxes()
+				customer_view.hide_order_hitboxes()
 				moving = true
 				state = 0
 			elif state == 2:
@@ -56,6 +60,8 @@ func _process(delta: float) -> void:
 			if state == 0:
 				target_transform = middle_transform
 				target_rot = deg_to_rad(middle_y_rot)
+				shelf_hitbox.hide_hitboxes()
+				customer_view.show_order_hitboxes()
 				moving = true
 				state = 1
 			elif state == 1:

@@ -4,6 +4,8 @@ extends Control
 @export var middle_order_bubble: Control
 @export var right_order_bubble: Control
 
+@export var order_hitboxes: Array[Panel]
+
 @export var type_texts: Array[RichTextLabel]
 @export var viscosity_texts: Array[RichTextLabel]
 
@@ -64,3 +66,13 @@ func hide_order_bubbles():
 	left_order_bubble.visible = false
 	middle_order_bubble.visible = false
 	right_order_bubble.visible = false
+
+func hide_order_hitboxes():
+	print ("hiding hitboxes")
+	for i in range(0, order_hitboxes.size()):
+		order_hitboxes[i].mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func show_order_hitboxes():
+	print ("showing hitboxes")
+	for i in range(0, order_hitboxes.size()):
+		order_hitboxes[i].mouse_filter = Control.MOUSE_FILTER_STOP

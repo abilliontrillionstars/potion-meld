@@ -1,16 +1,24 @@
-[gd_scene load_steps=17 format=3 uid="uid://rbtnml6u88wx"]
+[gd_scene load_steps=25 format=3 uid="uid://rbtnml6u88wx"]
 
 [ext_resource type="Script" uid="uid://bpmqs7r27ymer" path="res://Scripts/GameManager.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://v6meuafbqk1b" path="res://Scenes/PackedScenes/cauldron.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://cd2cfh6xcjk7q" path="res://Scripts/CameraController.gd" id="3_wowpa"]
 [ext_resource type="Environment" uid="uid://kof6le8h2tg8" path="res://Scenes/enviro.tres" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://b0m4qbxp6qkcd" path="res://Models/counter.fbx" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://ciesu4hqcblur" path="res://Models/countersides.fbx" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://bdjpqxn1ilgjd" path="res://Models/table.fbx" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://bui3twli65v45" path="res://Models/door.fbx" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://dactuko2d18dj" path="res://Models/window.fbx" id="9_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://rrwmij0uw38q" path="res://Models/shelves.fbx" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://k461333llrkv" path="res://Models/counter.fbx" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dthtf3qptidiw" path="res://Models/countersides.fbx" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://c0h4xqj1tmy8n" path="res://Models/table.fbx" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://2qvi0ha067dj" path="res://Models/door.fbx" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://clinl35gwqfv1" path="res://Models/window.fbx" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://d32w7ml6ilp8u" path="res://Models/shelves.fbx" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://c5b7v6shhr20q" path="res://Scenes/hud.tscn" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://cnyblt6qc3q0f" path="res://Scripts/shelves.gd" id="11_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://bj04vbgwotorp" path="res://Scenes/PackedScenes/ingredient.tscn" id="12_rku1e"]
+[ext_resource type="Texture2D" uid="uid://dxixugin58xup" path="res://Textures/dungeondust.png" id="13_nb51f"]
+[ext_resource type="Texture2D" uid="uid://cjpp7y603h05l" path="res://Textures/eyeofnewt.png" id="14_nnt18"]
+[ext_resource type="Texture2D" uid="uid://5d51lytvm3vt" path="res://Textures/grapesofwrath.png" id="15_iivbl"]
+[ext_resource type="Texture2D" uid="uid://bakv6y4bhedqx" path="res://Textures/phoenixfeather.png" id="16_7nbq1"]
+[ext_resource type="Texture2D" uid="uid://g0q5jmfr20ux" path="res://Textures/gelatinouscubes.png" id="17_exi56"]
+[ext_resource type="Texture2D" uid="uid://dvfevj8yysh3l" path="res://Textures/gloomweed.png" id="18_7t8sx"]
 
 [sub_resource type="Animation" id="Animation_3dryh"]
 resource_name = "CameraBob"
@@ -242,12 +250,68 @@ spot_range = 13.704
 spot_attenuation = 0.5
 
 [node name="shelves" parent="." instance=ExtResource("10_ldgsr")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.591, -1.1877, -2)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.591, -1.36971, -2)
+script = ExtResource("11_rfjv2")
+
+[node name="Ingredient1" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 4.504, 0.75)
+
+[node name="Sprite3D" parent="shelves/Ingredient1" index="0"]
+texture = ExtResource("13_nb51f")
+
+[node name="Ingredient2" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 4.504, -0.75)
+
+[node name="Sprite3D" parent="shelves/Ingredient2" index="0"]
+texture = ExtResource("14_nnt18")
+
+[node name="Ingredient3" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 3.48588, 1.5)
+
+[node name="Sprite3D" parent="shelves/Ingredient3" index="0"]
+texture = ExtResource("15_iivbl")
+
+[node name="Ingredient4" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 3.48588, 0)
+
+[node name="Sprite3D" parent="shelves/Ingredient4" index="0"]
+texture = ExtResource("16_7nbq1")
+
+[node name="Ingredient5" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 3.48588, -1.5)
+
+[node name="Sprite3D" parent="shelves/Ingredient5" index="0"]
+texture = ExtResource("17_exi56")
+
+[node name="Ingredient6" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141001, 2.47035, 0.75)
+
+[node name="Sprite3D" parent="shelves/Ingredient6" index="0"]
+texture = ExtResource("18_7t8sx")
+
+[node name="Ingredient7" parent="shelves" instance=ExtResource("12_rku1e")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0.141, 2.47035, -0.75)
 
 [node name="HUD" parent="." instance=ExtResource("11_o5yvi")]
 
+[node name="InventoryManager" parent="HUD" index="0" node_paths=PackedStringArray("slot_displays")]
+slot_displays = [NodePath("InventoryPopout/InvSlot1/Slot1Panel"), NodePath("InventoryPopout/InvSlot2/Slot2Panel"), NodePath("InventoryPopout/InvSlot3/Slot3Panel"), NodePath("InventoryPopout/InvSlot4/Slot4Panel"), NodePath("InventoryPopout/InvSlot5/Slot5Panel"), NodePath("InventoryPopout/InvSlot6/Slot6Panel")]
+
+[node name="IngredientDisplay" parent="HUD/InventoryManager" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 262.0
+offset_top = 494.0
+offset_right = 847.0
+offset_bottom = 583.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="StirrerDragbox" type="Panel" parent="HUD"]
-visible = false
 layout_mode = 0
 offset_left = 348.0
 offset_top = 177.0
@@ -258,3 +322,13 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_o5yvi")
 
 [connection signal="mouse_entered" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/StirrerDragbox" to="cauldron" method="_on_stirrer_dragbox_2_mouse_exited"]
+
+[editable path="shelves"]
+[editable path="shelves/Ingredient1"]
+[editable path="shelves/Ingredient2"]
+[editable path="shelves/Ingredient3"]
+[editable path="shelves/Ingredient4"]
+[editable path="shelves/Ingredient5"]
+[editable path="shelves/Ingredient6"]
+[editable path="shelves/Ingredient7"]
+[editable path="HUD"]

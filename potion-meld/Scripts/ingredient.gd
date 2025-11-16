@@ -2,7 +2,7 @@ extends Node
 
 class_name Ingredient
 
-enum ingredient_type { DungeonDust, EyeOfNewt, GrapesOfWrath, PhoenixFeather, GelatinousCubes }
+enum ingredient_type { DungeonDust, EyeOfNewt, GrapesOfWrath, PhoenixFeather, GelatinousCubes, GloomWeed, ElvenLeaf, }
 var type: ingredient_type
 var color: Color
 

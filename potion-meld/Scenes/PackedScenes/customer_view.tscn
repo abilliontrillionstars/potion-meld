@@ -41,7 +41,7 @@ expand_margin_right = 16.0
 expand_margin_bottom = 16.0
 shadow_offset = Vector2(2, 2)
 
-[node name="CustomerView" type="Control" node_paths=PackedStringArray("left_order_bubble", "middle_order_bubble", "right_order_bubble", "type_texts", "viscosity_texts")]
+[node name="CustomerView" type="Control" node_paths=PackedStringArray("left_order_bubble", "middle_order_bubble", "right_order_bubble", "order_hitboxes", "type_texts", "viscosity_texts")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -52,6 +52,7 @@ script = ExtResource("1_wl22r")
 left_order_bubble = NodePath("LeftOrderBubble")
 middle_order_bubble = NodePath("MiddleOrderBubble")
 right_order_bubble = NodePath("RightOrderBubble")
+order_hitboxes = [NodePath("MiddleCustomer"), NodePath("RightCustomer"), NodePath("LeftCustomer")]
 type_texts = [NodePath("LeftOrderBubble/Panel/PotionTypeLabel"), NodePath("MiddleOrderBubble/Panel/PotionTypeLabel"), NodePath("RightOrderBubble/Panel/PotionTypeLabel")]
 viscosity_texts = [NodePath("LeftOrderBubble/Panel/ViscosityTypeLabel"), NodePath("MiddleOrderBubble/Panel/ViscosityTypeLabel"), NodePath("RightOrderBubble/Panel/ViscosityTypeLabel")]
 
