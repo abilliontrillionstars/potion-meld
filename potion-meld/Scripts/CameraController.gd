@@ -53,6 +53,7 @@ func look_left():
 	$"../SoundManager".find_child("Footsteps").play()
 	curr_transform_x = position.x
 	curr_transform_z = position.z
+	lerp_val = 0
 	curr_rot = rotation.y
 	if state == 0:
 		pass
@@ -79,6 +80,7 @@ func look_right():
 	$"../SoundManager".find_child("Footsteps").play()
 	curr_transform_x = position.x
 	curr_transform_z = position.z
+	lerp_val = 0
 	curr_rot = rotation.y
 	if state == 0:
 		target_transform = middle_transform
@@ -101,9 +103,7 @@ func look_right():
 
 
 func _on_look_left_button_pressed() -> void:
-	if !moving:
-		look_left()
+	look_left()
 
 func _on_look_right_button_pressed() -> void:
-	if !moving:
-		look_right()
+	look_right()

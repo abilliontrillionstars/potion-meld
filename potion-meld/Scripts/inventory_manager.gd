@@ -62,11 +62,12 @@ func _process(delta: float) -> void:
 				slot_displays[hovered_inv_slot].texture = null
 
 			if camera_ref.state == 2:
-				cauldron.add_ingredient(inv_slot_ingredients[hovered_inv_slot])
-				inv_slot_ingredients[hovered_inv_slot] = null
-				inv_slots_occupied[hovered_inv_slot] = false
-				slot_displays[hovered_inv_slot].texture = null
-				print ("put dat shit in the cauldron !")
+				if !cauldron.finished and !cauldron.resetting:
+					cauldron.add_ingredient(inv_slot_ingredients[hovered_inv_slot])
+					inv_slot_ingredients[hovered_inv_slot] = null
+					inv_slots_occupied[hovered_inv_slot] = false
+					slot_displays[hovered_inv_slot].texture = null
+					print ("put dat shit in the cauldron !")
 
 
 	if camera_ref.state == 0:

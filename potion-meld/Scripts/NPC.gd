@@ -6,6 +6,7 @@ var npc_order: NPCOrder
 var npc_wait_timer: float
 var next_destination: Vector3
 var counter_spot_id: int
+var npc_id: int
 
 var movespeed = 5.0
 
@@ -53,7 +54,9 @@ func _process(delta: float) -> void:
 		if (next_destination - position).length() < 0.1:
 			moving = false
 			if leaving:
-				queue_free()
+				#NpcManager.remove_npc(npc_id)
+				#queue_free()
+				get_child(1).play_backwards("NPCAppear")
 
 func leave_counter():
 	leaving = true

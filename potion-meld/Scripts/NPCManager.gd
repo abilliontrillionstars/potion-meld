@@ -5,6 +5,7 @@ var npcs = []
 var spawn_timer = 0.0
 var time_to_spawn_next = randi_range(10, 20)
 var first_npc = false
+var npcs_spawned = 0
 var counter_spots_avail = [true, true, true]
 var counter_npcs = [null, null, null]
 var counter_spots = [Vector3(2.5, 0.0, 4.0), Vector3(0.0, 0.0, 4.0), Vector3(-2.5, 0.0, 4.0)]
@@ -28,6 +29,8 @@ func _process(delta: float) -> void:
 	
 func AddNPC():
 	var new_npc = npc_scene.instantiate() as NPC
+	new_npc.npc_id = npcs_spawned
+	npcs_spawned += 1
 	#$"/root/World".add_child(new_npc)
 	get_parent().add_child(new_npc)
 	npcs.append(new_npc)
@@ -48,6 +51,13 @@ func clear_npcs():
 		
 	counter_spots_avail = [true, true, true]
 	counter_npcs = [null, null, null]
+	npcs = []
+	first_npc = false
+
+func remove_npc(npc_id: int):
+	for i in range(0, npcs.size()):
+		if npcs[i].npc_id == npc_id:
+			npcs.remove_at(i)
 
 func occupy_counter_spot(spot_id: int, npc: NPC):
 	counter_spots_avail[spot_id] = false

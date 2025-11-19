@@ -37,9 +37,13 @@ func attempt_deliver_potion(ingr1, ingr2):
 	for i in range(0, NpcManager.counter_npcs.size()):
 		if NpcManager.counter_npcs[i]:
 			if NpcManager.counter_npcs[i].npc_order.order_type == potion_type:
-				GameManager.add_player_score(clamp((40 * (NpcManager.counter_npcs[i].lifetime/ NpcManager.counter_npcs[i].npc_wait_timer)), 0, 9999) + 10)
+				var time_bonus = NpcManager.counter_npcs[i].npc_wait_timer / NpcManager.counter_npcs[i].lifetime
+				if time_bonus > 1.0:
+					time_bonus = 0.0
+				GameManager.add_player_score(clamp((40 * time_bonus), 0, 9999) + 10)
 				customer_view.hide_order_bubble(i)
 				NpcManager.counter_npcs[i].leave_counter()
+				customers_served += 1
 				print ("found a match, award player points")
 				$"/root/World/SoundManager/ServeCustomer".play()
 			#print (NpcManager.npcs[i].npc_order.order_type)

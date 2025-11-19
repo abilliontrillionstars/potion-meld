@@ -83,6 +83,7 @@ func _process(delta: float) -> void:
 		finished_timer += delta
 		if finished_timer >= 1.0 and !resetting:
 			resetting = true
+			liquid_anim.stop()
 			liquid_anim.play("LiquidFlush")
 			cauldron_label_3.visible = true
 			var bb_code = "[wave amp=20.0 freq=2.0 connected=1]"
@@ -95,6 +96,7 @@ func set_cauldron_color(new_color: Color):
 	liquid_color = liquid_mat.get("shader_parameter/albedo")
 	updating_color = true
 	desired_color = new_color
+	liquid_anim.stop()
 	liquid_anim.play("LiquidSplash")
 
 
@@ -142,7 +144,6 @@ func finish_potion():
 func reset_cauldron():
 	GameManager.attempt_deliver_potion(ingredient1, ingredient2)
 	finished = false
-	resetting = false
 	finished_timer = 0.0
 	current_progress = 0.0
 	ingredient1 = -1
@@ -153,6 +154,7 @@ func reset_cauldron():
 
 func hide_potion_name():
 	cauldron_label_3.visible = false
+	resetting = false
 
 func get_ingr_color(ingr_type):
 	match ingr_type:

@@ -97,7 +97,6 @@ offset_left = 44.0
 offset_top = 74.0
 offset_right = 1110.0
 offset_bottom = 481.0
-mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.184314)
 theme_override_constants/table_v_separation = 0
@@ -164,7 +163,7 @@ theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 text = "[wave amp=20
 .0 freq=2
-.0 connected=1]Gloomweed[/wave]"
+.0 connected=1]Potion Meld[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
