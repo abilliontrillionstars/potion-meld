@@ -74,7 +74,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.38028, 0)
 modulate = Color(1, 1, 1, 0)
 billboard = 1
 shaded = true
-alpha_cut = 3
+alpha_cut = 2
 alpha_antialiasing_mode = 2
 texture_filter = 0
 texture = ExtResource("2_kmhqc")
@@ -83,7 +83,7 @@ texture = ExtResource("2_kmhqc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 billboard = 1
 shaded = true
-alpha_cut = 3
+alpha_cut = 2
 texture_filter = 2
 texture = ExtResource("3_kmhqc")
 

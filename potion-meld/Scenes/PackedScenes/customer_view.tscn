@@ -42,7 +42,6 @@ expand_margin_bottom = 16.0
 shadow_offset = Vector2(2, 2)
 
 [node name="CustomerView" type="Control" node_paths=PackedStringArray("left_order_bubble", "middle_order_bubble", "right_order_bubble", "order_hitboxes", "type_texts", "viscosity_texts")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -108,7 +107,6 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_nb51f")
 
 [node name="LeftOrderBubble" type="Control" parent="."]
-visible = false
 show_behind_parent = true
 anchors_preset = 0
 offset_left = 240.0
@@ -196,7 +194,6 @@ Thin (20-41%)"
 horizontal_alignment = 1
 
 [node name="MiddleOrderBubble" type="Control" parent="."]
-visible = false
 show_behind_parent = true
 z_index = 1
 anchors_preset = 0
@@ -245,9 +242,9 @@ horizontal_alignment = 1
 
 [node name="PotionTypeLabel" type="RichTextLabel" parent="MiddleOrderBubble/Panel"]
 layout_mode = 0
-offset_left = -16.0
+offset_left = -66.0
 offset_top = 28.0
-offset_right = 242.0
+offset_right = 292.0
 offset_bottom = 156.0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
@@ -285,7 +282,6 @@ Thin (20-41%)"
 horizontal_alignment = 1
 
 [node name="RightOrderBubble" type="Control" parent="."]
-visible = false
 show_behind_parent = true
 anchors_preset = 0
 offset_left = 688.0
@@ -333,9 +329,9 @@ horizontal_alignment = 1
 
 [node name="PotionTypeLabel" type="RichTextLabel" parent="RightOrderBubble/Panel"]
 layout_mode = 0
-offset_left = -16.0
+offset_left = -66.0
 offset_top = 28.0
-offset_right = 242.0
+offset_right = 292.0
 offset_bottom = 156.0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.122252, 0.122252, 0.122252, 1)
@@ -347,7 +343,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/normal_font = ExtResource("2_48pnw")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "Potion of Nausea"
+text = "Potion of Dangersense"
 horizontal_alignment = 1
 
 [node name="ViscosityTypeLabel" type="RichTextLabel" parent="RightOrderBubble/Panel"]
